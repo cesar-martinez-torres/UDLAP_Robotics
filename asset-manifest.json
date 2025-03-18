@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/UDLAP_Robotics/static/css/main.e6c13ad2.css",
-    "main.js": "/UDLAP_Robotics/static/js/main.262c65de.js",
+    "main.js": "/UDLAP_Robotics/static/js/main.c878ed96.js",
     "index.html": "/UDLAP_Robotics/index.html",
     "main.e6c13ad2.css.map": "/UDLAP_Robotics/static/css/main.e6c13ad2.css.map",
-    "main.262c65de.js.map": "/UDLAP_Robotics/static/js/main.262c65de.js.map"
+    "main.c878ed96.js.map": "/UDLAP_Robotics/static/js/main.c878ed96.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.262c65de.js"
+    "static/js/main.c878ed96.js"
   ]
 }
