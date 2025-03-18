@@ -2,7 +2,7 @@
   "name": "udlap-robotics",
   "homepage": "https://cesar-martinez-torres.github.io/UDLAP_Robotics",
   "packageManager": "yarn@4.7.0",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "2.2.4",
@@ -18,6 +18,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "framer-motion": "^12.4.11",
+    "fs-extra": "^11.3.0",
     "gh-pages": "^6.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -32,8 +33,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "add-404": "node ./scripts/add-404.js",
     "predeploy": "yarn build",
-    "deploy": "yarn predeploy && gh-pages -d build"
+    "deploy": "yarn predeploy && npm run add-404 && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +56,7 @@
     ]
   },
   "devDependencies": {
+    "@types/fs-extra": "^11",
     "@types/gh-pages": "^6"
   }
 }
