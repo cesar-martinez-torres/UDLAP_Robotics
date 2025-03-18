@@ -27,7 +27,7 @@ export const Router: React.FC = () => {
   }
 
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename="/UDLAP_Robotics">
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
