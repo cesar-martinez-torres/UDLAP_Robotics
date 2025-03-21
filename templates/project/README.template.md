@@ -9,7 +9,7 @@ This is a **placeholder** README for a sample project. It serves as a demonstrat
 ## Features
 
 - Feature 1
-- Feature 2
+- Feature 2 Test
 - Feature 3
 - Placeholder for future features
 
