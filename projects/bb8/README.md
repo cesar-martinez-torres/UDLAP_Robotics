@@ -8,7 +8,7 @@ This is a **placeholder** README for a sample project. It serves as a demonstrat
 
 ## Features
 
-- Feature 1
+- Feature 1 Test
 - Feature 2
 - Feature 3
 - Placeholder for future features
