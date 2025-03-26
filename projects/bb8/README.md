@@ -24,7 +24,7 @@ This is a **placeholder** README for a sample project. It serves as a demonstrat
 prueba
 
 
-  
+![joints](projects\kinectronics\media\videos\demo.mp4)
 
 ## Requirements
 
