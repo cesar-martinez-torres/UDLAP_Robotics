@@ -15,11 +15,10 @@ This is a **placeholder** README for a sample project. It serves as a demonstrat
 > [!WARNING]
 > Urgent info that needs immediate user attention to avoid problems.
 
-<p align="center">
+
   <img src="https://raw.githubusercontent.com/nasa/ogma/gh-pages/images/simulator.gif" alt="Monitoring within simulation video">
-  <br />
-  <i>Integration of monitors into larger applications (e.g., simulators).</i>
-</p>
+
+  
 
 ## Requirements
 
