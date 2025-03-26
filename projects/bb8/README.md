@@ -12,6 +12,8 @@ This is a **placeholder** README for a sample project. It serves as a demonstrat
 - Feature 2
 - Feature 3
 - Placeholder for future features
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
 
 ## Requirements
 
