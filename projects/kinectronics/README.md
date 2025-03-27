@@ -56,6 +56,6 @@ It is intendded to add a lot of features to the software. In mid-term, I'm plann
 ## Media
 
 ![joints](https://github.com/JMRMEDEV/readme-fetch-test/blob/main/projects/kinectronics/media/images/joints.png)
-![joints](https://cesar-martinez-torres.github.io/UDLAP_Robotics/docs/kinectronics)
+![joints](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/images/joints.png)
 
 **Note**: Above is a media test.
