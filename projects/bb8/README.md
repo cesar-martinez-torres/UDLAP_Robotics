@@ -26,6 +26,15 @@ prueba
 
 ![joints](projects\kinectronics\media\videos\demo.mp4)
 
+## Hardware
+
+| Componente          | Descripción                          | Cantidad | Enlace (Opcional)         |
+|---------------------|--------------------------------------|----------|---------------------------|
+| Microcontrolador    | Arduino Uno R3                      | 1        | [Link](#)                |
+| Sensores            | HC-SR04 Ultrasónico                 | 2        | [Link](#)                |
+| Motores             | Servo MG996R                        | 4        | [Link](#)                |
+| Batería             | LiPo 11.1V 2200mAh                  | 1        | [Link](#)                |
+
 ## Requirements
 
 - Operating System: Windows/macOS/Linux
