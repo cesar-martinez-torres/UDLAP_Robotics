@@ -11,5 +11,5 @@ En el Laboratorio de Robótica de la Universidad de las Américas Puebla, nos de
 
 ## 📝 Contribuciones
 
-Eres estudiante de la UDLAP ¿te interesa aprender más?  ¿contribuir con el sitio?
+¿Eres estudiante de la UDLAP? ¿Te interesa aprender más?  ¿Contribuir con el sitio?
 Ponte en contacto con el Dr. César Martínez Torres al correo electrónico cesar.martinez@udlap.mx
