@@ -1,12 +1,12 @@
 # {Home}
 
-> A brief description of the project goes here. This can be a one-liner summarizing its purpose.
+En el Laboratorio de Robótica de la Universidad de las Américas Puebla, nos dedicamos a la investigación, desarrollo y aplicación de tecnologías robóticas avanzadas. Nuestro objetivo es fomentar la innovación y el aprendizaje en áreas como la robótica aérea y móvil, inteligencia artificial, visión por computadora,sistemas embebidos y de control. 
 
-## 🚀 Features
+## 🔍 ¿Qué encontrarás en nuestro sitio?
 
-- ✅ **Feature One** - Brief explanation.
-- 📌 **Feature Two** - Another key feature.
-- ⚡ **Feature Three** - More functionality described.
+- 🧰 **Tutoriales y Recursos Educativos** - Accede a materiales didácticos creados por el equipo del laboratorio: guías paso a paso, ejemplos de código, simulaciones y más...
+- 📘 **Cursos Impartidos y Proyectos Académicos** - Consulta los cursos relacionados con robótica, inteligencia artificial y control que impartimos, así como los proyectos destacados desarrollados por estudiantes en el marco de estas asignaturas.
+- 📂 **Proyectos de Investigación y Aplicación** - More functionality described.
 
 ## Projects
 
