@@ -9,15 +9,7 @@ En el Laboratorio de Robótica de la Universidad de las Américas Puebla, nos de
 - 📂 **Proyectos de Investigación y Aplicación** -  Explora los desarrollos en los que estamos trabajando...
 
 
-## 📝 Contributing
+## 📝 Contribuciones
 
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch (`feature-branch`).
-3. Make your changes.
-4. Submit a pull request.
-
-## 📞 Contacto
-
-- 📧 Email: cesar.martinez@udlap.mx
+Eres estudiante de la UDLAP ¿te interesa aprender más?  ¿contribuir con el sitio?
+Ponte en contacto con el Dr. César Martínez Torres al correo electrónico cesar.martinez@udlap.mx
