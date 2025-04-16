@@ -16,13 +16,17 @@
 
 ## 🗂️ Tabla de Contenidos
 
-1. [Introducción](#introducción)
-2. [Instalación](#instalación)
-3. [Configuración del Entorno](#configuración-del-entorno)
-4. [Desarrollo Paso a Paso](#desarrollo-paso-a-paso)
-5. [Pruebas y Validación](#pruebas-y-validación)
-6. [Conclusión](#conclusión)
-7. [Recursos Adicionales](#recursos-adicionales)
+- [{Tutorial BB8}](#tutorial-bb8)
+- [📘 Título del Tutorial](#-título-del-tutorial)
+  - [🧰 Requisitos Previos](#-requisitos-previos)
+  - [🗂️ Tabla de Contenidos](#️-tabla-de-contenidos)
+  - [🔍 Introducción](#-introducción)
+  - [⚙️ Instalación](#️-instalación)
+  - [🛠️ Configuración del Entorno](#️-configuración-del-entorno)
+  - [🧪 Desarrollo Paso a Paso](#-desarrollo-paso-a-paso)
+  - [🧠 Conclusión](#-conclusión)
+  - [🔗 Recursos Adicionales](#-recursos-adicionales)
+  - [📬 Contacto](#-contacto)
 
 ---
 
@@ -51,3 +55,31 @@ Pasos para configurar el entorno de desarrollo:
 * Configurar variables de entorno.
 
 * Verificar la instalación de dependencias.
+
+## 🧪 Desarrollo Paso a Paso
+Paso 1: Descripción del primer paso
+
+Instrucciones detalladas y código de ejemplo:
+
+
+Paso 2: Descripción del segundo paso
+
+Más instrucciones y ejemplos según sea necesario.
+
+## 🧠 Conclusión
+
+Resumen de lo aprendido y posibles extensiones o proyectos relacionados.
+
+## 🔗 Recursos Adicionales
+
+    Enlace a documentación oficial
+
+    Tutoriales relacionados
+
+    Repositorio de código fuente
+
+## 📬 Contacto
+
+Para preguntas o sugerencias:
+
+* 📧 Correo electrónico: ejemplo@correo.com
