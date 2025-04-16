@@ -72,11 +72,11 @@ Resumen de lo aprendido y posibles extensiones o proyectos relacionados.
 
 ## 🔗 Recursos Adicionales
 
-    Enlace a documentación oficial
+Enlace a documentación oficial
 
-    Tutoriales relacionados
+Tutoriales relacionados
 
-    Repositorio de código fuente
+Repositorio de código fuente
 
 ## 📬 Contacto
 
