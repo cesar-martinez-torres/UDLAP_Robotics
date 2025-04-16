@@ -16,13 +16,13 @@ Breve descripción del proyecto
 
 ---
 
-## Introducción
+## 📖 Introducción
 
 Explicación del propósito del proyecto, para qué sirve, posibles aplicaciones y motivación para construirlo.
 
 ---
 
-## 🧰 Materiales
+## 🔩 Materiales
 
 Lista detallada de componentes y materiales con cantidades aproximadas:
 
