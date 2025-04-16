@@ -1,6 +1,6 @@
 # {Acerca del Laboratorio}
 
-En el Laboratorio de Robótica de la Universidad de las Américas Puebla, nos dedicamos a la investigación, desarrollo y aplicación de tecnologías robóticas avanzadas. Nuestro objetivo es fomentar la innovación y el aprendizaje en áreas como la robótica aérea y móvil, inteligencia artificial, visión por computadora,sistemas embebidos y de control. 
+En el Laboratorio de Robótica de la Universidad de las Américas Puebla, nos dedicamos a la investigación, desarrollo y aplicación de tecnologías robóticas avanzadas. Nuestro objetivo es fomentar la innovación y el aprendizaje en áreas como la robótica, inteligencia artificial, visión por computadora, sistemas embebidos y sistemas de control. 
 
 ## 🔍 ¿Qué encontrarás en nuestro sitio?
 
