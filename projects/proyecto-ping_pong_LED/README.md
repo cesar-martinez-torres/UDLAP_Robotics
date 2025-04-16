@@ -1,4 +1,5 @@
-# {Proyecto Ping-Pong LED}
+# {Proyecto: Ping-Pong LED}
+![MIT License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
 Breve descripción del proyecto
 
