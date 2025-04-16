@@ -73,5 +73,7 @@ It is intendded to add a lot of features to the software. In mid-term, I'm plann
 | row 1 | column 2 | column 3 |
 | row 2 | row 2 column 2 | row 2 column 3 |
 
+>[!VIDEO](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/videos/demo.mp4)
+
 
 **Note**: Above is a media test.
