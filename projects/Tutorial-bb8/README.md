@@ -1,85 +1,53 @@
 # {Tutorial BB8}
 
-## Introduction
+# 📘 Título del Tutorial
 
-This is a **placeholder** README for a sample project. It serves as a demonstration of how a README file might be structured.
+> 🧭 Breve descripción del objetivo del tutorial y lo que el lector aprenderá al completarlo.
 
-**Disclaimer:** This is a work in progress. The software and documentation are subject to change. Please report any critical issues or missing documentation. Contributions via **pull requests** are welcome.
+---
 
-## Features
+## 🧰 Requisitos Previos
 
-- Feature 1 Test
-- Feature 2
-- Feature 3
-- Placeholder for future features
-> [!WARNING]
-> Urgent info that needs immediate user attention to avoid problems.
+- 🧠 Conocimientos necesarios (e.g., programación básica, matemáticas, etc.)
+- 💻 Herramientas y software requeridos (e.g., Python, ROS, Arduino IDE)
+- 📦 Dependencias o bibliotecas a instalar
 
+---
 
-  <img src="https://raw.githubusercontent.com/nasa/ogma/gh-pages/images/simulator.gif" alt="Monitoring within simulation video">
+## 🗂️ Tabla de Contenidos
 
-  
+1. [Introducción](#introducción)
+2. [Instalación](#instalación)
+3. [Configuración del Entorno](#configuración-del-entorno)
+4. [Desarrollo Paso a Paso](#desarrollo-paso-a-paso)
+5. [Pruebas y Validación](#pruebas-y-validación)
+6. [Conclusión](#conclusión)
+7. [Recursos Adicionales](#recursos-adicionales)
 
-<video src="projects\kinectronics\media\videos\demo.mp4" width="320" height="240" controls></video>
-prueba
+---
 
+## 🔍 Introducción
 
-![joints](projects\kinectronics\media\videos\demo.mp4)
+Explicación detallada del problema o tema que aborda el tutorial, su importancia y aplicaciones prácticas.
 
-## Hardware
+---
 
-| Componente          | Descripción                          | Cantidad | Enlace (Opcional)         |
-|---------------------|--------------------------------------|----------|---------------------------|
-| Microcontrolador    | Arduino Uno R3                      | 1        | [Link](#)                |
-| Sensores            | HC-SR04 Ultrasónico                 | 2        | [Link](#)                |
-| Motores             | Servo MG996R                        | 4        | [Link](#)                |
-| Batería             | LiPo 11.1V 2200mAh                  | 1        | [Link](#)                |
+## ⚙️ Instalación
 
-## Requirements
+Instrucciones para instalar las herramientas y dependencias necesarias:
 
-- Operating System: Windows/macOS/Linux
-- 64-bit architecture
-- Development environment (e.g., Visual Studio, VS Code)
-- Additional dependencies as needed
-
-## Installation
-
-Clone this repository and follow the installation steps:
-
-```sh
-git clone https://github.com/example/example-repo.git
-cd example-repo
-# Additional setup steps
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
 ```
 
-## Warning
+## 🛠️ Configuración del Entorno
 
-This software is provided **as-is** without any warranty. Use at your own risk.
+Pasos para configurar el entorno de desarrollo:
 
-## Usage
+* Crear un directorio de trabajo.
 
-To use this project, follow these basic steps:
+* Configurar variables de entorno.
 
-1. Initialize the application
-2. Load required configurations
-3. Run the software using the appropriate commands
-
-Example:
-
-```sh
-npm start
-```
-
-## Future Releases
-
-Planned improvements include:
-
-- Support for additional platforms
-- Enhanced performance optimizations
-- Expanded documentation
-
-## Bibliography
-
-- Placeholder reference 1
-- Placeholder reference 2
-- Placeholder reference 3
+* Verificar la instalación de dependencias.
