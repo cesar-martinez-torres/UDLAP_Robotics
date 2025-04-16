@@ -68,4 +68,10 @@ It is intendded to add a lot of features to the software. In mid-term, I'm plann
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
 ![video prueba](https://github.com/cesar-martinez-torres/UDLAP_Robotics/tree/master/projects/proyecto-ping_pong_LED/media/videos)
 
+| Header | Another header | Yet another header |
+|--- |--- |--- |
+| row 1 | column 2 | column 3 |
+| row 2 | row 2 column 2 | row 2 column 3 |
+
+
 **Note**: Above is a media test.
