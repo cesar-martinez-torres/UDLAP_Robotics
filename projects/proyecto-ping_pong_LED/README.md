@@ -1,63 +1,93 @@
 # {Proyecto Ping-Pong LED}
 
-## Introduction
+Breve descripción del proyecto
 
-This is a **placeholder** README for a sample project. It serves as a demonstration of how a README file might be structured. (this is a mod test)
+---
 
-**Disclaimer:** This is a work in progress. The software and documentation are subject to change. Please report any critical issues or missing documentation. Contributions via **pull requests** are welcome.
+## 📋 Requisitos Previos
 
-## Features
+- Conocimientos necesarios (e.g., uso básico de herramientas, electrónica, programación)
 
-- Feature 1
-- Feature 2
-- Feature 3
-- Placeholder for future features
+- Herramientas requeridas (e.g., multímetro, cautín, impresora 3D)
 
-## Requirements
+- Componentes electrónicos o mecánicos necesarios (e.g., Arduino, motores, sensores)
 
-- Operating System: Windows/macOS/Linux
-- 64-bit architecture
-- Development environment (e.g., Visual Studio, VS Code)
-- Additional dependencies as needed
+- Software necesario (e.g., Arduino IDE, Fusion 360, PrusaSlicer)
 
-## Installation
+---
 
-Clone this repository and follow the installation steps:
+## Introducción
 
-```sh
-git clone https://github.com/example/example-repo.git
-cd example-repo
-# Additional setup steps
-```
+Explicación del propósito del proyecto, para qué sirve, posibles aplicaciones y motivación para construirlo.
 
-## Warning
+---
 
-This software is provided **as-is** without any warranty. Use at your own risk.
+## 🧰 Materiales
 
-## Usage
+Lista detallada de componentes y materiales con cantidades aproximadas:
 
-To use this project, follow these basic steps:
+- 1x Microcontrolador (Arduino Uno, ESP32, etc.)
 
-1. Initialize the application
-2. Load required configurations
-3. Run the software using the appropriate commands
+- 2x Servo motores SG90
 
-Example:
+- Cable Dupont (macho-macho y macho-hembra)
 
-```sh
-npm start
-```
+- 1x Protoboard
 
-## Future Releases
+- Tornillos M3 x 12mm (x6)
 
-Planned improvements include:
+- Fuente de alimentación (5V)
 
-- Support for additional platforms
-- Enhanced performance optimizations
-- Expanded documentation
+- Opcional: Caja impresa en 3D (se puede incluir STL)
 
-## Bibliography
+---
+## 💾 Instalación de Software
 
-- Placeholder reference 1
-- Placeholder reference 2
-- Placeholder reference 3
+Instrucciones para instalar el software necesario (IDE, drivers, librerías):
+
+---
+
+## ⚙️ Montaje y Ensamblado
+
+Pasos detallados para ensamblar el dispositivo, incluir diagramas y fotos del proceso
+
+**Paso 1:** Ensamblar la base
+
+**Paso 2:** Conectar los motores al microcontrolador
+
+**Paso 3:** Asegurar los componentes en la carcasa
+
+### 🔌 Conexiones Eléctricas
+
+Diagrama esquemático y tabla de conexiones entre componentes:
+
+---
+
+## 💻 Programación
+
+Código de ejemplo con explicación de cada parte relevante:
+
+---
+
+## ✅ Conclusión
+
+Resumen de lo que se logró construir, aprendizajes obtenidos y posibles mejoras o versiones futuras del proyecto.
+
+## 📚 Recursos Adicionales
+
+---
+
+## 👥 Autores del proyecto
+
+Autores originales del proyecto
+
+---
+
+## 📬 Contacto
+
+¿Tienes dudas o sugerencias?
+
+- 📧 Correo electrónico: ejemplo@udlap.mx
+
+---
+
