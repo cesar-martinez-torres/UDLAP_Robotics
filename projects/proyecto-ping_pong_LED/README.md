@@ -75,6 +75,10 @@ Resumen de lo que se logró construir, aprendizajes obtenidos y posibles mejoras
 
 ---
 
+## 🔜 Mejoras futuras
+
+- Enlistar las mejoras a realizar
+
 ## ⚠️ Advertencia
 
 Como se indica en la licencia MIT, este software se proporciona **sin ningún tipo de garantía**. Por lo tanto, ningún colaborador es responsable de **cualquier daño a tus componentes, materiales, PC, etc..**.
