@@ -1,4 +1,4 @@
-# {Led Hero}
+# {Proyecto Ping-Pong LED}
 
 ## Introduction
 
