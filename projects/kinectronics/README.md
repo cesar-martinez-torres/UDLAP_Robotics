@@ -65,7 +65,7 @@ It is intendded to add a lot of features to the software. In mid-term, I'm plann
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
 ![Banner UDLAP Robotics](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/images/banner_1280x640.png)
 ![test](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/images/test.png)![ROS](https://img.shields.io/badge/ROS-22314E?style=for-the-badge&logo=ros&logoColor=white)
->![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
+![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
 ![video prueba](https://github.com/cesar-martinez-torres/UDLAP_Robotics/tree/master/projects/proyecto-ping_pong_LED/media/videos)
 
 | Header | Another header | Yet another header |
@@ -73,8 +73,10 @@ It is intendded to add a lot of features to the software. In mid-term, I'm plann
 | row 1 | column 2 | column 3 |
 | row 2 | row 2 column 2 | row 2 column 3 |
 
->[!VIDEO](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/videos/demo.mp4)
+[!VIDEO](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/videos/demo.mp4)
 [![Watch the video](https://img.youtube.com/vi/nTQUwghvy5Q/default.jpg)](https://youtu.be/nTQUwghvy5Q)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nTQUwghvy5Q" frameborder="0" allowfullscreen></iframe>
+
 
 
 **Note**: Above is a media test.
