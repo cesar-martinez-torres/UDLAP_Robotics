@@ -80,6 +80,12 @@ It is intendded to add a lot of features to the software. In mid-term, I'm plann
 
 ![GIF divertido](https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif)
 
+Prueba gif + video
+
 [![Watch the video](https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif)](https://youtu.be/nTQUwghvy5Q)
+
+prueba imagen 800 x 600
+
+![joints](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/images/joints.png)
 
 **Note**: Above is a media test.
