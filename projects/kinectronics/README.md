@@ -78,6 +78,7 @@ It is intendded to add a lot of features to the software. In mid-term, I'm plann
 
 [![Watch the video](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/images/joints.png)](https://youtu.be/nTQUwghvy5Q)
 
+![GIF divertido](https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif)
 
 
 
