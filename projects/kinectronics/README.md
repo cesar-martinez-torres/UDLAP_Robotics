@@ -86,6 +86,6 @@ Prueba gif + video
 
 prueba imagen 800 x 600
 
-![joints](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/images/joints.png)
+![joints](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/images/blank.png)
 
 **Note**: Above is a media test.
