@@ -65,7 +65,7 @@ It is intendded to add a lot of features to the software. In mid-term, I'm plann
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
 ![Banner UDLAP Robotics](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/images/banner_1280x640.png)
 ![test](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/images/test.png)![ROS](https://img.shields.io/badge/ROS-22314E?style=for-the-badge&logo=ros&logoColor=white)
-![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
+>![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
 ![video prueba](https://github.com/cesar-martinez-torres/UDLAP_Robotics/tree/master/projects/proyecto-ping_pong_LED/media/videos)
 
 | Header | Another header | Yet another header |
