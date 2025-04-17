@@ -74,6 +74,7 @@ It is intendded to add a lot of features to the software. In mid-term, I'm plann
 | row 2 | row 2 column 2 | row 2 column 3 |
 
 >[!VIDEO](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/videos/demo.mp4)
+[![Watch the video](https://img.youtube.com/vi/nTQUwghvy5Q/default.jpg)](https://youtu.be/nTQUwghvy5Q)
 
 
 **Note**: Above is a media test.
