@@ -76,6 +76,7 @@ It is intendded to add a lot of features to the software. In mid-term, I'm plann
 [!VIDEO](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/videos/demo.mp4)
 [![Watch the video](https://img.youtube.com/vi/nTQUwghvy5Q/default.jpg)](https://youtu.be/nTQUwghvy5Q)
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nTQUwghvy5Q" frameborder="0" allowfullscreen></iframe>
+[![joints](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/kinectronics/media/images/joints.png?raw=true)](https://youtu.be/nTQUwghvy5Q)
 
 
 
