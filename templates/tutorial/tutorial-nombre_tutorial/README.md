@@ -1,4 +1,4 @@
-# {Tutorial: ROS1}
+# {Tutorial: }
 
 Breve descripción del objetivo del tutorial y lo que el lector aprenderá al completarlo.
 
