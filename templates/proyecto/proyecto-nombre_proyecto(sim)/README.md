@@ -1,4 +1,3 @@
-# {Proyecto: Ping-Pong LED}
 # {Proyecto: Nombre del Proyecto Simulado}  
 ![MIT License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)  
 ![Maintained](https://img.shields.io/badge/status-maintained-brightgreen?style=for-the-badge)  
