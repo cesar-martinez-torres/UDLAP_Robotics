@@ -8,7 +8,7 @@ Así pues, a lo largo de este tutorial estudiaremos los distintos tipos de movim
 
 ## 📋 Requisitos Previos
 
-- Instalación de URSim (guía de instalación: https://drive.google.com/file/d/1XBEqzTVAYYV9bFNBp0DkKGqSmh7_G8Jh/view?usp=sharing)
+- Instalación de URSim ([Guía de instalación de URSim](https://drive.google.com/file/d/1XBEqzTVAYYV9bFNBp0DkKGqSmh7_G8Jh/view?usp=sharing))
 - Computadora con 2 nucleos mínimo
 - 4 RAM mínimo
 - Recomendado tener gráfica 
@@ -19,11 +19,7 @@ Así pues, a lo largo de este tutorial estudiaremos los distintos tipos de movim
 
 Universal Robots (o mejor conocido como "UR") es una empresa danesa fundada en 2005, líder mundial en el desarrollo de robots colaborativos, robots los cuales, a diferencia de los robots industriales, están diseñados para trabajar junto con personas a su alrededor, esto al tener implementado protocolos y sistemas de seguridad en su programación, quitando la necesidad de implementar barreras físicas en el espacio de trabajo (en muchas aplicaciones).
 
-<p align="center">
-  <img src="media/images/UR5.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> UR5 fabricado por Universal Robots
+![UR5](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/UR5.png)
 
 Así pues, el tema que abordaremos en este tutorial es el diseño y programación de una rutina "Pick and Place" en el entorno de simulación URSim. Para ello, primero debemos saber que es un "Pick and Place", el cual se refiere a una tarea fundamental y ampliamente utilizada dentro de la robótica industria, misma la cual consiste en tomar un objeto de un punto A y colocarlo en un punto B de forma automática, precisa y repetitiva, esto a través de distintos tipos de movimientos programados, movimientos que constan de 3 principales:
 - MoveL: consiste en un movimiento en línea recta del punto central de la herramienta a un punto deseado.
@@ -64,80 +60,45 @@ Pasos para configurar el entorno de desarrollo:
 
 Antes de comenzar a programar movimientos en el brazo robótico debemos moverlo en su posición "Home", para ello damos click en la pestaña "Move" y después damos click en la opción "Home":
 
-<p align="center">
-  <img src="media/images/home.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Sección donde se encuentra la opción "Home"
-
+![Home](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/home.png)
 
 **Paso 2:** Mandar al robot a "Home" de manera automatica
 
 Despues de dar click a la opción "Home", mandaremos al robot a esa posición de manera automática, para ello, le daremos click y mantendremos presionado en la sección que dice "Auto", cabe mencionar que la sección "Manual" es para mandar al robot a su posición "Home" moviendolo de manera física:
 
-<p align="center">
-  <img src="media/images/Auto.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Sección donde se encuentra la opción "Auto"
+![Auto](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/Auto.png)
 
 **Paso 3:** Configurar el primer movimiento
 
 Una vez posicionado el robot en "Home" podemos empezar a programar el primer movimiento, para ello daremos click en la sección "Program" y despues en "Structure":
 
-<p align="center">
-  <img src="media/images/Movimiento.png" alt="Image Open" style="width:35%;"> 
-</p>
+![Movimiento](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/Movimiento.png)
 
 <p align="center"> Sección donde se encuentran las distintas opciones para programar el robot
 
 En esta sección encontraremos todas las funciones que puede realizar el robot dentro de la rutina. Así pues, nostros estamos interesados en el movimiento del robot, por lo tanto le damos click en la opción "Move". Después, nos aparecerá nuevas opciones en el arbol de programación, lo que nos indicará que se agregó el comando "Move" de manera correcta:
 
-<p align="center">
-  <img src="media/images/MoveJ.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Comando "Move" reflejado en el arbol de programación
+![MoveJ](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/MoveJ.png)
   
 Cómo podemos ver, ahora podemos ver dos opciones: "MoveJ" y "Waypoint 1", comenzaremos a abordar el primer comando "MoveJ". Así pues, si damos click sobre el comando "MoveJ" y después damos click en la sección "Command", nos desplegará un menú donde podrás configurar el movimiento a realizar:
 
-<p align="center">
-  <img src="media/images/MoveJP.png" alt="Image Open" style="width:35%;"> 
-</p>
+![MoveJP](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/MoveJP.png)
 
-<p align="center"> Configuración "MoveJ"
-  
-<p align="center">
-  <img src="media/images/Command.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Sección donde puedes configurar "MoveJ"
-
+![Command](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/Command.png)
+ 
 En esta sección puedes configurar tanto el tipo de movimiento (MoveJ, MoveL y MoveP), así como la velocidad y la acelareación de la articulación. En nuestro caso, dejaremos la misma configuración, con la velocidad, aceleración y el movimeinto ya establecidos.
 
 Así pues, una vez configurado el tipo de movimeinto, continuamos con la sección "Waypoint 1", para ello, le damos click en "Waypoint 1" y de la misma forma le damos click en la sección "Command":
 
-<p align="center">
-  <img src="media/images/Waypoint.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Sección donde podemos configurar el primer movimiento
+![Waypoint](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/Waypoint.png)
 
 En esta sección podremos configurar los punto de paso, es decir, podemos mover el robot para configurar el primer punto por el cual pasará el brazo, para ello le damos click en "Set Waypoint":
 
-<p align="center">
-  <img src="media/images/1Move.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Sección donde podemos mover el robot y configurar el primer punto de paso mover 
+![1Move](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/1Move.png)
   
 Aquí podremos mover el robot con las flechas que están disponibles o podremos directamente dar un ángulo especifico a cada articulación. Así pues y como lo habiamos mencionado anteriormente, ubicaremos el robot encima del objeto a tomar, para ello, yo utilicé la siguiente configuración para cada articulación:
 
-<p align="center">
-  <img src="media/images/P1.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Primer movimiento a realizar del robot 
+![P1](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/P1.png)
 
 Le demas click en "OK" y tendremos listo el primer movimiento.
 
@@ -145,19 +106,11 @@ Le demas click en "OK" y tendremos listo el primer movimiento.
 
 Una vez programado el primer movimiento, el resto se basa en el mismo procedimiento. Para el segundo movimeinto ahora utilizaremos un "MoveL", ya que ahora con acercaremos al objeto de manera lineal, entonces, de la misma forma agregamos otro comando "Move" y lo configuramos como "MoveL":
 
-<p align="center">
-  <img src="media/images/MoveL.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Sección donde se puede cambiar el tipo de movimiento
+![MoveL](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/MoveL.png)
 
 Del mismo modo, en el arbol de programación se verá reflejado el cambia. Así pues, del mismo modo que lo hicimos anteriormente, configuramos el segundo punto de paso, por lo tanto, seleccionamos "Waypoint_2" y le damos click en "Set Waypoint". Dentro de esa pestaña yo configuramos un movimiento el cual se acerque al punto donde agarraría el objeto:
 
-<p align="center">
-  <img src="media/images/MoveLP.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Segundo punto de paso
+![MoveLP](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/MoveLP.png)
 
 Le damos click en "OK" y tenemos el segundo movimiento listo
 
@@ -167,49 +120,25 @@ Cabe mencionar que en la simulación no poseemos comandos para simular una pinza
 
 Una vez programado el segundo movimiento, ahora programaremos el tercer movimiento, para ello, seguiremos el recorrido normal de un "Pick and Place", es decir, despues de bajar y tomar el objeto necesitamos de una salida para asegurarnos de que el robot no choque con ningún objeto del entorno, para ello solo movemeremos el brazo hacia arriba a través de un "MoveL", así pues, seguimos los mismos pasos anteriormente vistos:
 
-<p align="center">
-  <img src="media/images/MoveL2.png" alt="Image Open" style="width:35%;"> 
-</p>
+![MoveL2](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/MoveL2.png)
 
-<p align="center"> Sección donde se puede cambiar el tipo de movimiento
-
-<p align="center">
-  <img src="media/images/MoveLP2.1.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Sección donde se puede configurar el tercer movimiento
+![MoveLP2](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/MoveLP2.png)
 
 **Paso 6:** Configurar el cuarto movimiento
 
 Para el cuarto movimiento ahora mandaremos al brazo al lugar donde dejaremos el objeto tomado, para ello utilizaremos un "MoveJ" y, en mi caso, movere la base del robot 180°, así pues, agregamos un nuevo movimiento y configuramos el punto de paso:
 
-<p align="center">
-  <img src="media/images/MoveJ2.png" alt="Image Open" style="width:35%;"> 
-</p>
+![MoveJ2](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/MoveJ2.png)
 
-<p align="center"> Sección donde se puede cambiar el tipo de movimiento
-
-<p align="center">
-  <img src="media/images/MoveJP2.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Sección donde se puede configurar el cuarto movimiento
+![MoveJP2](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/MoveJP2.png)
 
 **Paso 7:** Configurar el quinto movimiento
 
 Para el quinto movimiento y del mismo modo que lo hicimos anteriormente, bajaremos el brazo para dejarlo en el lugar deseado, todo esto a través de un "MoveL":
 
-<p align="center">
-  <img src="media/images/MoveL3.png" alt="Image Open" style="width:35%;"> 
-</p>
+![MoveL3](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/MoveL3.png)
 
-<p align="center"> Sección donde se puede cambiar el tipo de movimiento
-
-<p align="center">
-  <img src="media/images/MoveLP3.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Sección donde se puede configurar el quinto movimiento
+![MoveLP3](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/MoveLP3.png)
 
 Aquí, fisicamente, podremos configurar la pinza para que abra.
 
@@ -217,27 +146,15 @@ Aquí, fisicamente, podremos configurar la pinza para que abra.
 
 Para el sexto movimiento ahora necesitamos la salida para que el brazo no choque con el entorno, para ello agregamos un "MoveL" y configuramos el punto del paso arriba de donde dejamos el objeto:
 
-<p align="center">
-  <img src="media/images/MoveL4.png" alt="Image Open" style="width:35%;"> 
-</p>
+![MoveL4](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/MoveL4.png)
 
-<p align="center"> Sección donde se puede cambiar el tipo de movimiento
-
-<p align="center">
-  <img src="media/images/MoveLP4.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Sección donde se puede configurar el sexto movimiento
+![MoveLP4](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/MoveLP4.png)
 
 **Paso 9:** Simulación
 
 Ya tendremos nuestro programa completo, el cual ahora podremos simular. Para ello, nos vamos al apartado de "Graphics", le damos click en "Simulation" y la damos click en el boton de play:
 
-<p align="center">
-  <img src="media/images/Simulacion.png" alt="Image Open" style="width:35%;"> 
-</p>
-
-<p align="center"> Sección donde puedes visualizar la simulación
+![Simulacion](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/Simulacion.png)
 
 Con esto habremos finalizado con nuestra programación del "UR5" para un programa "Pick and Place"
 
@@ -252,9 +169,9 @@ Este proyecto tuvo como principal proposito enseñar e interesar al lector a con
 
 ## 📚 Referencias y Recursos Adicionales
 
-https://www.universal-robots.com/download/software-cb-series/simulator-non-linux/offline-simulator-cb-series-non-linux-ursim-3158/
+[Sitio Oficial para descargar URSim](https://www.universal-robots.com/download/software-cb-series/simulator-non-linux/offline-simulator-cb-series-non-linux-ursim-3158/)
 
-Guía de instalación de URSim: https://drive.google.com/file/d/1XBEqzTVAYYV9bFNBp0DkKGqSmh7_G8Jh/view?usp=sharing
+[Guía de instalación de URSim](https://drive.google.com/file/d/1XBEqzTVAYYV9bFNBp0DkKGqSmh7_G8Jh/view?usp=sharing)
 
 
 ---
