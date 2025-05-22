@@ -1,6 +1,6 @@
 # {Acerca del Laboratorio}
 
-![banner](https://github.com/EinarCordova/tutorial-Pick_and_Place_con_URSim-/blob/main/media/images/UR5.png)
+![banner](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/img_home/UDLAP_ROBOTICS.png)
 En el Laboratorio de Robótica de la Universidad de las Américas Puebla, nos dedicamos a la investigación, desarrollo y aplicación de tecnologías robóticas avanzadas. Nuestro objetivo es fomentar la innovación y el aprendizaje en áreas como la robótica, inteligencia artificial, visión por computadora, sistemas embebidos y sistemas de control. 
 
 ## 🔍 ¿Qué encontrarás en nuestro sitio?
