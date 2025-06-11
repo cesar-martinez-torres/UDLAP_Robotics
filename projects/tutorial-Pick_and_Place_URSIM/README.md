@@ -1,5 +1,6 @@
 # {Tutorial: Pick and place con URSim}
 Publicado. 11-junio-2025 
+
 El siguiente tutorial tiene como objetivo desarrollar un movimiento de "Pick and place" para el brazo róbotico colaborativo "UR5", el programa se desarrollará utilizando Polyscope (Interfaz gráfica de UR) y URSim, programa que permite simular el robot e importar el código al robot físico si fuera necesario.
 
 A lo largo de este tutorial estudiaremos los distintos tipos de movimiento que el robot puede realizar, además, aprenderemos a configurar el entorno virtual, programar los movimientos del robot a realizar y ejecutar una sencilla tarea de recogida y colocación de objetos (Pick and Place).
