@@ -36,7 +36,20 @@
     "*"
   ],
   "allowedTools": [
-    "web_fetch"
+    "web_fetch",
+    "track_session",
+    "log_prompt",
+    "log_action",
+    "log_git_commits",
+    "get_recent_context",
+    "get_session_history",
+    "check_progress",
+    "close_session",
+    "switch_session",
+    "list_sessions",
+    "restore_latest",
+    "init_presession",
+    "restore_backup"
   ],
   "resources": [
     "file://.kiro/steering/*.md"
