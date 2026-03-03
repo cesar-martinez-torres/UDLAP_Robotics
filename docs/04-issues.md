@@ -114,9 +114,83 @@ const projectPromises = interpretedProjects.map(async (project) => {
 const projects = await Promise.all(projectPromises);
 ```
 
+## Code Quality Issues
+
+### 5. Inconsistent Naming Conventions in Source Directories
+**Severity**: 🟡 Medium
+**Impact**: Maintainability, professionalism, developer experience
+
+**Problem**:
+- Source code directories not fully in English
+- Inconsistent naming conventions across directories
+- Mixed language (Spanish/English)
+- Inconsistent use of hyphens vs underscores
+- Mixed case (camelCase, snake_case, kebab-case)
+- Unexpected characters (parentheses in directory names)
+
+**Examples**:
+```
+/templates/proyecto/proyecto-nombre_proyecto(Hardware)  ❌
+/templates/proyecto/proyecto-nombre_proyecto(sim)      ❌
+/templates/Instrucciones/instrucciones                 ❌
+/projects/tutorial-Pick_and_Place_URSIM                ❌
+```
+
+**Issues**:
+- `proyecto` (Spanish) instead of `project` (English)
+- `nombre_proyecto` (Spanish placeholder with underscore)
+- Parentheses in directory names: `(Hardware)`, `(sim)`
+- Mixed separators: hyphens and underscores in same name
+- Inconsistent capitalization: `Pick_and_Place_URSIM`
+- `Instrucciones` (Spanish) instead of `Instructions` (English)
+
+**Expected Convention**:
+```
+/templates/project/project-hardware-template          ✅
+/templates/project/project-simulation-template        ✅
+/templates/instructions/getting-started               ✅
+/projects/tutorial-pick-and-place-ursim               ✅
+```
+
+**Recommended Naming Convention**:
+- **Language**: English only
+- **Case**: kebab-case (lowercase with hyphens)
+- **Separators**: Hyphens only (no underscores, no parentheses)
+- **Descriptive**: Clear, descriptive names
+- **Consistent**: Same pattern across all directories
+
+**Impact**:
+- Harder to navigate codebase
+- Confusing for international contributors
+- URL generation issues (special characters)
+- Inconsistent user experience
+- Professional appearance
+
+**Solution**:
+1. Rename all directories to follow consistent convention
+2. Update references in code
+3. Document naming convention in contribution guidelines
+4. Add linting/validation for directory names
+
+**Migration Plan**:
+```bash
+# Example renames
+mv templates/proyecto templates/project
+mv templates/Instrucciones templates/instructions
+mv templates/proyecto/proyecto-nombre_proyecto\(Hardware\) templates/project/project-hardware-template
+mv templates/proyecto/proyecto-nombre_proyecto\(sim\) templates/project/project-simulation-template
+mv projects/tutorial-Pick_and_Place_URSIM projects/tutorial-pick-and-place-ursim
+```
+
+**Note**: This will require updating:
+- GitHub repository structure
+- Any hardcoded paths in code
+- Documentation references
+- Deployment scripts
+
 ## Bugs
 
-### 5. Color Mode Dependency Issue
+### 6. Color Mode Dependency Issue
 **Severity**: 🟡 Medium
 **Impact**: Unnecessary re-fetching
 
@@ -140,7 +214,7 @@ useEffect(() => {
 - Remove `colorMode` from dependency array
 - Apply color mode styling at render time, not fetch time
 
-### 6. Hardcoded GitHub Repository
+### 7. Hardcoded GitHub Repository
 **Severity**: 🟡 Medium
 **Impact**: Not reusable, difficult to maintain
 
@@ -162,7 +236,29 @@ export const GITHUB_CONTENT_URL =
   `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents`;
 ```
 
-### 7. Incorrect GitHub Link
+### 7. Hardcoded GitHub Repository
+**Severity**: 🟡 Medium
+**Impact**: Not reusable, difficult to maintain
+
+**Problem**:
+```tsx
+// constant-helpers.ts
+export const GITHUB_CONTENT_URL =
+  "https://api.github.com/repos/cesar-martinez-torres/UDLAP_Robotics/contents";
+```
+
+**Issue**: Repository name is hardcoded
+**Better**: Use environment variables
+
+**Solution**:
+```tsx
+const GITHUB_OWNER = process.env.REACT_APP_GITHUB_OWNER || 'cesar-martinez-torres';
+const GITHUB_REPO = process.env.REACT_APP_GITHUB_REPO || 'UDLAP_Robotics';
+export const GITHUB_CONTENT_URL = 
+  `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents`;
+```
+
+### 8. Incorrect GitHub Link
 **Severity**: 🟡 Medium
 **Impact**: Broken navigation
 
@@ -177,7 +273,7 @@ export const GITHUB_CONTENT_URL =
 **Issue**: Placeholder URL not replaced with actual repository
 **Should be**: `https://github.com/cesar-martinez-torres/UDLAP_Robotics`
 
-### 8. Missing Key Prop Warning
+### 9. Missing Key Prop Warning
 **Severity**: 🟢 Low
 **Impact**: React warnings in console
 
@@ -186,7 +282,7 @@ export const GITHUB_CONTENT_URL =
 
 **Better**: Use index or generate stable IDs
 
-### 9. Image URL Transformation Logic
+### 10. Image URL Transformation Logic
 **Severity**: 🟢 Low
 **Impact**: May break with certain URL formats
 
@@ -202,7 +298,7 @@ if (imageUrl.includes("github.com")) {
 **Issue**: Simple string replacement may fail with complex URLs
 **Better**: Use URL parsing and proper path manipulation
 
-### 10. No Loading Skeleton
+### 11. No Loading Skeleton
 **Severity**: 🟢 Low
 **Impact**: Poor perceived performance
 
@@ -211,7 +307,7 @@ if (imageUrl.includes("github.com")) {
 
 ## Technical Debt
 
-### 11. No Tests
+### 12. No Tests
 **Severity**: 🟠 High
 **Impact**: No confidence in refactoring, potential regressions
 
@@ -221,7 +317,7 @@ if (imageUrl.includes("github.com")) {
 - Add integration tests for components
 - Add E2E tests for critical flows
 
-### 12. No TypeScript Strict Mode Features
+### 13. No TypeScript Strict Mode Features
 **Severity**: 🟡 Medium
 **Impact**: Potential type safety issues
 
@@ -246,7 +342,7 @@ const ChakraRenderer: Components = {
 };
 ```
 
-### 13. No Code Splitting
+### 14. No Code Splitting
 **Severity**: 🟡 Medium
 **Impact**: Larger initial bundle size
 
@@ -264,7 +360,7 @@ const DocPage = lazy(() => import('./components/elements/DocPage'));
 </Suspense>
 ```
 
-### 14. Inconsistent Naming Conventions
+### 15. Inconsistent File Naming Conventions
 **Severity**: 🟢 Low
 **Impact**: Code readability
 
@@ -275,7 +371,7 @@ const DocPage = lazy(() => import('./components/elements/DocPage'));
 
 **Recommendation**: Establish and document naming conventions
 
-### 15. No Environment Configuration
+### 16. No Environment Configuration
 **Severity**: 🟡 Medium
 **Impact**: Difficult to configure for different environments
 
@@ -292,7 +388,7 @@ REACT_APP_GITHUB_REPO=UDLAP_Robotics
 REACT_APP_API_BASE_URL=https://api.github.com
 ```
 
-### 16. No Logging Strategy
+### 17. No Logging Strategy
 **Severity**: 🟢 Low
 **Impact**: Difficult to debug production issues
 
@@ -309,14 +405,14 @@ export const logger = {
 };
 ```
 
-### 17. No Performance Monitoring
+### 18. No Performance Monitoring
 **Severity**: 🟢 Low
 **Impact**: No visibility into performance issues
 
 **Installed but unused**: `web-vitals` package
 **Recommendation**: Implement Core Web Vitals tracking
 
-### 18. Accessibility Issues
+### 19. Accessibility Issues
 **Severity**: 🟡 Medium
 **Impact**: Poor experience for users with disabilities
 
@@ -328,7 +424,7 @@ export const logger = {
 
 **Good**: Chakra UI provides accessible components by default
 
-### 19. No Mobile Responsiveness
+### 20. No Mobile Responsiveness
 **Severity**: 🟡 Medium
 **Impact**: Poor mobile experience
 
@@ -346,7 +442,7 @@ export const logger = {
 >
 ```
 
-### 20. Markdown Parser Limitations
+### 21. Markdown Parser Limitations
 **Severity**: 🟢 Low
 **Impact**: Limited markdown features
 
@@ -361,20 +457,20 @@ export const logger = {
 
 ## Security Issues
 
-### 21. No Content Security Policy
+### 22. No Content Security Policy
 **Severity**: 🟡 Medium
 **Impact**: Potential XSS vulnerabilities
 
 **Recommendation**: Add CSP headers in `public/index.html`
 
-### 22. External Content Loading
+### 23. External Content Loading
 **Severity**: 🟡 Medium
 **Impact**: Potential security risk
 
 **Issue**: Loading markdown content from GitHub without sanitization
 **Mitigation**: `react-markdown` sanitizes by default, but should be verified
 
-### 23. No HTTPS Enforcement
+### 24. No HTTPS Enforcement
 **Severity**: 🟢 Low
 **Impact**: Potential MITM attacks
 
@@ -383,7 +479,7 @@ export const logger = {
 
 ## Performance Issues
 
-### 24. No Request Caching
+### 25. No Request Caching
 **Severity**: 🟠 High
 **Impact**: Slow page loads, wasted bandwidth
 
@@ -392,7 +488,7 @@ export const logger = {
 - Add cache invalidation strategy
 - Use service worker for offline support
 
-### 25. No Image Optimization
+### 26. No Image Optimization
 **Severity**: 🟡 Medium
 **Impact**: Slow image loading
 
@@ -401,7 +497,7 @@ export const logger = {
 - No responsive images
 - No image compression
 
-### 26. No Bundle Optimization
+### 27. No Bundle Optimization
 **Severity**: 🟡 Medium
 **Impact**: Larger bundle size
 
@@ -423,6 +519,7 @@ export const logger = {
 | P2 | Color Mode Dependency | Low | Medium |
 | P2 | No Mobile Responsiveness | Medium | Medium |
 | P2 | Hardcoded Repository | Low | Medium |
+| P2 | Inconsistent Directory Naming | Low | Medium |
 | P3 | Incorrect GitHub Link | Low | Low |
 | P3 | No Code Splitting | Medium | Medium |
 

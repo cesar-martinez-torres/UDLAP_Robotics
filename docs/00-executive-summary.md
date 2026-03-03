@@ -62,6 +62,7 @@
 - **Performance**: No caching, no code splitting
 - **Security**: Missing CSP headers, no dependency audits
 - **Documentation**: Code lacks comments and JSDoc
+- **Naming**: Inconsistent directory names (mixed languages, special characters)
 
 ## Technology Stack
 

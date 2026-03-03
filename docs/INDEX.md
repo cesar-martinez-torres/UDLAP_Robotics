@@ -33,7 +33,7 @@ I've created comprehensive technical documentation for the UDLAP Robotics projec
    - Anti-patterns and code smells
 
 5. **04-issues.md** (11 KB)
-   - 26 documented issues
+   - 27 documented issues
    - Critical bugs and technical debt
    - Priority matrix
    - Quick wins list
