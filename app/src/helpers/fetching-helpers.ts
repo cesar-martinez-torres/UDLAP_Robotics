@@ -6,62 +6,65 @@ import { parseMarkdownToChakra } from "./md-jsx-parser";
 export const fetchProjectsContents = async (
   colorMode?: "light" | "dark"
 ): Promise<IPage[]> => {
-  // Create output variable
   const contents: IPage[] = [];
   try {
-    // Fetch github-repo/projects content
     const projectsResponse = await fetch(`${GITHUB_CONTENT_URL}/projects`);
     if (!projectsResponse.ok) {
       throw new Error("Failed to fetch projects directory contents");
     }
     const projects = await projectsResponse.json();
-    // Interpret the retrieved data
     const interpretedProjects = projects as IGitHubContent[];
-    // Iterate through each possible project
-    for (let i = 0; i < interpretedProjects.length; i++) {
+    
+    // Filter out non-directory items (like .DS_Store)
+    const projectDirectories = interpretedProjects.filter(
+      (project) => project.type === "dir"
+    );
+    
+    // Parallelize API calls with Promise.all
+    const projectPromises = projectDirectories.map(async (project) => {
       try {
-        // Retrieve the content for each individual project
         const projectResponse = await fetch(
-          `${GITHUB_CONTENT_URL}/${interpretedProjects[i].path}`
+          `${GITHUB_CONTENT_URL}/${project.path}`
         );
         if (!projectResponse.ok) {
           throw new Error(
-            `Failed to fetch ${GITHUB_CONTENT_URL}/${interpretedProjects[i].path} contents`
+            `Failed to fetch ${GITHUB_CONTENT_URL}/${project.path} contents`
           );
         }
         const projectContents = await projectResponse.json();
-        // Filter the items containing `README.md` out of each project folder
-        // and interpret
+        
         const interpretedProjectReadmeContent = projectContents.find(
           (projectContent: IGitHubContent) =>
             projectContent.name.includes("README.md") &&
             projectContent.type.includes("file")
         ) as IGitHubContent;
-        // If the `download_url` exists proceed
-        if (interpretedProjectReadmeContent.download_url) {
-          // Download the `README.md` actual file
+        
+        if (interpretedProjectReadmeContent?.download_url) {
           const projectReadmeFile = await fetch(
             interpretedProjectReadmeContent.download_url
           );
-          // Convert to string
           const readmeText = await projectReadmeFile.text();
-          // Parse string
           const parsedReadme = parseMarkdownToChakra(readmeText, colorMode);
-          // Store in the output
-          contents.push({
+          
+          return {
             title: parsedReadme.title,
+            displayTitle: parsedReadme.displayTitle,
             content: parsedReadme.content,
-            id: interpretedProjects[i].name,
+            id: project.name,
             sections: parsedReadme.sections,
-          });
+          };
         }
       } catch (e) {
         console.error(
-          `There was an issue reading README.md for ${interpretedProjects[i].name}`,
+          `There was an issue reading README.md for ${project.name}`,
           e
         );
       }
-    }
+      return null;
+    });
+    
+    const results = await Promise.all(projectPromises);
+    contents.push(...results.filter((result): result is IPage => result !== null));
   } catch (e) {
     console.error("fetchProjectsContents:", e);
   }
@@ -100,6 +103,7 @@ export const fetchMainReadme = async (
       // Store in the output
       contents.push({
         title: parsedReadme.title,
+        displayTitle: parsedReadme.displayTitle,
         content: parsedReadme.content,
         id: interpretedRepoReadmeContent.name,
         sections: parsedReadme.sections,

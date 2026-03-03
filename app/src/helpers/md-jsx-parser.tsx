@@ -16,11 +16,31 @@ const extractTitle = (content: string): string => {
   return titleMatch ? titleMatch[1] : "Untitled";
 };
 
-// Extract section headers (## headers)
-const extractSections = (content: string): string[] => {
+// Extract display title with emojis
+const extractDisplayTitle = (content: string): string => {
+  return extractTitle(content);
+};
+
+// Extract clean title without emojis for URLs
+const extractCleanTitle = (content: string): string => {
+  const title = extractTitle(content);
+  return title.replace(/[\p{Emoji}\p{Emoji_Modifier}\p{Emoji_Component}\p{Emoji_Modifier_Base}\p{Emoji_Presentation}]/gu, '').trim();
+};
+
+// Extract section headers (## headers) with display and clean versions
+const extractSections = (content: string): Array<{ display: string; clean: string }> => {
   const sections = content.match(/^##\s*(.*)$/gm);
   return sections
-    ? sections.map((section) => section.replace(/^##\s*/, ""))
+    ? sections.map((section) => {
+        const displayText = section.replace(/^##\s*/, "");
+        const cleanText = displayText
+          .replace(/[\p{Emoji}\p{Emoji_Modifier}\p{Emoji_Component}\p{Emoji_Modifier_Base}\p{Emoji_Presentation}]/gu, '')
+          .trim();
+        return {
+          display: displayText,
+          clean: cleanText
+        };
+      })
     : [];
 };
 
@@ -39,13 +59,23 @@ const ChakraRenderer = (colorMode: "light" | "dark") => {
       />
     ),
     h2: (props: any) => {
-      const anchorId = props.children.toLowerCase().replace(/\s+/g, "-");
+      // Remove emojis and convert to kebab-case for anchor ID
+      const cleanText = String(props.children)
+        .replace(/[\p{Emoji}\p{Emoji_Modifier}\p{Emoji_Component}\p{Emoji_Modifier_Base}\p{Emoji_Presentation}]/gu, '')
+        .trim()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/\s+/g, "-")
+        .replace(/[^\w-]+/g, "")
+        .replace(/^-+|-+$/g, '');
+      
       return (
         <Heading
           as="h2"
           my={5}
           size="md"
-          id={anchorId}
+          id={cleanText}
           color={colorMode === "dark" ? "white" : "gray.800"}
         >
           {props.children}
@@ -153,7 +183,8 @@ export const parseMarkdownToChakra = (
   content: string,
   colorMode: "light" | "dark" = "dark"
 ): IMarkdownParserResult => {
-  const title = extractTitle(content);
+  const displayTitle = extractDisplayTitle(content);
+  const title = extractCleanTitle(content);
   const sections = extractSections(content);
   const updatedContent = content.replace(/^#\s*\{(.*)\}\s*$/m, "# $1");
 
@@ -165,6 +196,7 @@ export const parseMarkdownToChakra = (
 
   return {
     title,
+    displayTitle,
     sections,
     content: jsxContent,
   };

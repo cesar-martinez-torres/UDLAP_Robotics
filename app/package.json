@@ -1,7 +1,7 @@
 {
   "name": "udlap-robotics",
   "homepage": "https://cesar-martinez-torres.github.io/UDLAP_Robotics",
-  "packageManager": "yarn@4.7.0",
+  "packageManager": "yarn@4.13.0",
   "version": "1.0.1",
   "private": true,
   "dependencies": {

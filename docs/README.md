@@ -6,6 +6,32 @@ This directory contains comprehensive technical documentation for the UDLAP Robo
 
 ## Documentation Structure
 
+### [QUICK-WINS-IMPLEMENTATION.md](./QUICK-WINS-IMPLEMENTATION.md) ⭐ NEW
+**Quick Wins Implementation Summary**
+
+Complete documentation of performance optimizations and enhancements:
+- Duplicate data fetching fix (ProjectsContext)
+- Parallel API calls implementation
+- Environment variables configuration
+- GitHub link fix
+- Color mode dependency removal
+- Emoji navigation support
+- Spanish character handling
+
+**Status**: ✅ Complete and tested
+
+### [RESOLVED-ISSUES.md](./RESOLVED-ISSUES.md) ⭐ NEW
+**Resolved Issues Summary**
+
+Comprehensive list of all resolved issues with technical details:
+- 6 issues resolved (duplicate fetching, sequential calls, etc.)
+- 1 new feature added (emoji navigation)
+- Performance improvements summary
+- Technical implementation details
+- Testing checklist
+
+**Status**: ✅ All issues resolved
+
 ### [01-architecture.md](./01-architecture.md)
 **Architecture Documentation**
 

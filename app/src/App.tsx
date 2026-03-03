@@ -1,18 +1,20 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { Router } from "./router/Router";
+import { ProjectsProvider } from "./context/ProjectsContext";
 
-// Create a custom theme to set dark mode as default
 const theme = extendTheme({
   config: {
-    initialColorMode: "dark", // Default color mode is dark
-    useSystemColorMode: false, // Disable system color mode to enforce the default color mode
+    initialColorMode: "dark",
+    useSystemColorMode: false,
   },
 });
 
 export const App: React.FC = () => {
   return (
     <ChakraProvider theme={theme}>
-      <Router />
+      <ProjectsProvider>
+        <Router />
+      </ProjectsProvider>
     </ChakraProvider>
   );
 };

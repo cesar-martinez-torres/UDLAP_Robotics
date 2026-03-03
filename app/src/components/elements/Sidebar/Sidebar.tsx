@@ -7,32 +7,18 @@ import {
   IconButton,
   useColorMode,
 } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { fetchProjectsContents } from "../../../helpers/fetching-helpers";
 import { toKebabCase } from "../../../helpers/string-helpers";
-import { IPage } from "../../../shared/interfaces/page.interface";
-import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons"; // For the collapsible button
+import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import { Loading } from "../Loading";
+import { useProjects } from "../../../context/ProjectsContext";
 
 export const Sidebar: React.FC = () => {
-  const { colorMode } = useColorMode(); // Get colorMode and toggle function
+  const { colorMode } = useColorMode();
+  const { projects, loading } = useProjects();
+  const [expandedPages, setExpandedPages] = useState<Set<string>>(new Set());
 
-  const [pages, setPages] = useState<IPage[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [expandedPages, setExpandedPages] = useState<Set<string>>(new Set()); // Track expanded pages
-
-  useEffect(() => {
-    const loadPages = async () => {
-      const data = await fetchProjectsContents();
-      setPages(data);
-      setLoading(false);
-    };
-
-    loadPages();
-  }, []);
-
-  // Toggle the expanded state for a given page title
   const toggleSection = (pageTitle: string) => {
     setExpandedPages((prevExpandedPages) => {
       const newExpandedPages = new Set(prevExpandedPages);
@@ -64,17 +50,16 @@ export const Sidebar: React.FC = () => {
           <Loading />
         ) : (
           <VStack align="start" pl={4} spacing={2}>
-            {pages.map((page) => (
+            {projects.map((page) => (
               <Box key={page.id}>
-                {/* Link to the page itself */}
                 <Link
                   as={RouterLink}
                   to={`/docs/${toKebabCase(page.title)}`}
                   _hover={{ textDecoration: "underline" }}
                   fontWeight="bold"
-                  onClick={() => toggleSection(page.title)} // Toggle collapse when clicked
+                  onClick={() => toggleSection(page.title)}
                 >
-                  {page.title}
+                  {page.displayTitle}
                   <IconButton
                     aria-label={
                       expandedPages.has(page.title) ? "Collapse" : "Expand"
@@ -91,11 +76,10 @@ export const Sidebar: React.FC = () => {
                     ml={2}
                   />
                 </Link>
-                {/* Collapsible Sections */}
                 <Collapse in={expandedPages.has(page.title)}>
                   <VStack align="start" spacing={2} pl={4}>
                     {page.sections.map((section) => {
-                      const sectionLink = toKebabCase(section); // Use kebab-case for links
+                      const sectionLink = toKebabCase(section.clean);
                       return (
                         <Link
                           key={sectionLink}
@@ -103,7 +87,7 @@ export const Sidebar: React.FC = () => {
                           to={`/docs/${toKebabCase(page.title)}#${sectionLink}`}
                           _hover={{ textDecoration: "underline" }}
                         >
-                          {section}
+                          {section.display}
                         </Link>
                       );
                     })}

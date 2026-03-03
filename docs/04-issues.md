@@ -33,7 +33,7 @@ const response = await fetch(url, { headers });
 - Consider pre-building content at deploy time
 
 ### 2. Duplicate Data Fetching
-**Severity**: 🟠 High
+**Severity**: 🟢 RESOLVED (was 🟠 High)
 **Impact**: Performance, unnecessary API calls
 
 **Problem**:
@@ -41,19 +41,22 @@ const response = await fetch(url, { headers });
 - `Sidebar.tsx` fetches the same data independently
 - Double API calls on every page load
 
+**Resolution** (2026-03-03):
+- Created `ProjectsContext` to share data between components
+- Single source of truth at app level
+- Eliminated duplicate fetching
+
 **Code Locations**:
 ```tsx
-// Router.tsx line ~15
+// BEFORE: Router.tsx line ~15
 const data = await fetchProjectsContents(colorMode);
 
-// Sidebar.tsx line ~25
+// BEFORE: Sidebar.tsx line ~25
 const data = await fetchProjectsContents();
-```
 
-**Solution**:
-- Lift state to App.tsx or use Context API
-- Share fetched data between components
-- Implement proper state management (React Query, SWR)
+// AFTER: ProjectsContext.tsx
+// Single fetch shared across all components
+```
 
 ### 3. No Error Handling UI
 **Severity**: 🟠 High
@@ -89,7 +92,7 @@ if (error) {
 ```
 
 ### 4. Sequential API Calls
-**Severity**: 🟠 High
+**Severity**: 🟢 RESOLVED (was 🟠 High)
 **Impact**: Slow page load times
 
 **Problem**:
@@ -103,7 +106,7 @@ for (let i = 0; i < interpretedProjects.length; i++) {
 
 **Impact**: If there are 10 projects, they load one by one instead of in parallel
 
-**Solution**:
+**Resolution** (2026-03-03):
 ```tsx
 const projectPromises = interpretedProjects.map(async (project) => {
   const response = await fetch(`${GITHUB_CONTENT_URL}/${project.path}`);
@@ -191,7 +194,7 @@ mv projects/tutorial-Pick_and_Place_URSIM projects/tutorial-pick-and-place-ursim
 ## Bugs
 
 ### 6. Color Mode Dependency Issue
-**Severity**: 🟡 Medium
+**Severity**: 🟢 RESOLVED (was 🟡 Medium)
 **Impact**: Unnecessary re-fetching
 
 **Problem**:
@@ -210,9 +213,10 @@ useEffect(() => {
 **Issue**: Content is re-fetched when user toggles dark/light mode
 **Expected**: Only styling should change, not content
 
-**Solution**:
-- Remove `colorMode` from dependency array
-- Apply color mode styling at render time, not fetch time
+**Resolution** (2026-03-03):
+- Removed `colorMode` from dependency array
+- Data now fetches only once on mount
+- Theme changes are instant without re-fetching
 
 ### 7. Hardcoded GitHub Repository
 **Severity**: 🟡 Medium
