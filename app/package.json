@@ -34,6 +34,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "add-404": "node ./scripts/add-404.js",
+    "normalize:preview": "node ./scripts/normalize-filenames.js --dry-run",
+    "normalize:apply": "node ./scripts/normalize-filenames.js",
     "predeploy": "yarn build",
     "deploy": "yarn predeploy && npm run add-404 && gh-pages -d build"
   },

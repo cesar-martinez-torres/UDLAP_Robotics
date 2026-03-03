@@ -12,7 +12,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { toKebabCase } from "../../../helpers/string-helpers";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import { Loading } from "../Loading";
-import { useProjects } from "../../../context/ProjectsContext";
+import { useProjects } from "../../../context/projects-context";
 
 export const Sidebar: React.FC = () => {
   const { colorMode } = useColorMode();

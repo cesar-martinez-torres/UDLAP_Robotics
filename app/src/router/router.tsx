@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Layout, DocPage, Loading } from "../components/elements";
 import { Home } from "./pages/Home";
-import { useProjects } from "../context/ProjectsContext";
+import { useProjects } from "../context/projects-context";
 
 export const Router: React.FC = () => {
   const { projects, loading } = useProjects();

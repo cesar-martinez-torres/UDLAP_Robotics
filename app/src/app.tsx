@@ -1,6 +1,6 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { Router } from "./router/Router";
-import { ProjectsProvider } from "./context/ProjectsContext";
+import { Router } from "./router/router";
+import { ProjectsProvider } from "./context/projects-context";
 
 const theme = extendTheme({
   config: {
