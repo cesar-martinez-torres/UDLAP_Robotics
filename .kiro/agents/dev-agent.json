@@ -1,0 +1,123 @@
+{
+  "name": "dev-agent",
+  "description": "Frontend development agent for Typescript with React",
+  "prompt": "You are a frontend developer specializing in typescript and React. You follow best practices and the steering rules defined in .kiro/steering/ directory.",
+  "mcpServers": {
+    "amazon-q-history": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/home/jmrmedev/mcp-servers/amazon-q-history/server.js"
+      ]
+    },
+    "web-scraper": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/home/jmrmedev/mcp-servers/web-scraper/server.js"
+      ]
+    },
+    "cypress": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/home/jmrmedev/mcp-servers/cypress/server.js"
+      ]
+    },
+    "chakra-ui": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/home/jmrmedev/mcp-servers/chakra-ui/server.js"
+      ]
+    }
+  },
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "web_fetch"
+  ],
+  "resources": [
+    "file://.kiro/steering/*.md"
+  ],
+  "toolsSettings": {
+    "fs_read": {
+      "allowedPaths": [
+        "./**/*.json",
+        "./**/*.md",
+        "./**/*.yml",
+        "./**/*.yaml",
+        "./.gitignore",
+        "./**/*.ts",
+        "./**/*.tsx"
+      ],
+      "deniedPaths": [
+        "./**/node_modules/",
+        "./**/node_modules/**"
+      ]
+    },
+    "fs_write": {
+      "allowedPaths": [
+        "./**/*.json",
+        "./**/*.md",
+        "./**/*.yml",
+        "./**/*.yaml",
+        "./.gitignore",
+        "./**/*.ts",
+        "./**/*.tsx"
+      ],
+      "deniedPaths": [
+        "./**/node_modules/",
+        "./**/node_modules/**"
+      ]
+    },
+    "execute_bash": {
+      "allowedCommands": [
+        "ls -la*",
+        "pwd",
+        "find*",
+        "git status",
+        "git fetch",
+        "git diff*",
+        "git log*",
+        "npm install",
+        "npm test*",
+        "npx tsc --noEmit"
+      ],
+      "deniedCommands": [
+        "rm -rf *",
+        "sudo *",
+        "chmod 777 *",
+        "*--force*"
+      ]
+    }
+  },
+  "hooks": {
+    "agentSpawn": [
+      {
+        "command": "echo 'SESSION: Use init_presession first. If it says \"Auto-restored\" or \"Session is now active\", DO NOT call track_session. Only call track_session if you need to create completely new work.'"
+      },
+      {
+        "command": "echo 'ALWAYS read .kiro/steering/README.md and summarize the rules'"
+      },
+      {
+        "command": "echo 'Check if context has overflowed. Use init_presession to browse sessions without creating one. If sessions exist, use restore_latest for most recent or list_sessions to choose. Only use track_session for new work.'"
+      },
+      {
+        "command": "echo 'IMPORTANT: If session was restored or is active, ask user if they want to import recent git commits with log_git_commits. Suggest: log_git_commits --max_commits 5 or log_git_commits --since \"1 hour ago\". This provides context about recent work.'"
+      },
+      {
+        "command": "echo 'CONTEXT MANAGEMENT: When session is restored or active, ALWAYS use get_recent_context (default 5 prompts, 10 actions) to retrieve safe context. If more context needed, incrementally increase: get_recent_context --prompt_count 8 --action_count 15, then --prompt_count 10 --action_count 20 if still insufficient. Never use get_session_history for large sessions as it causes context overflow.'"
+      }
+    ],
+    "userPromptSubmit": [
+      {
+        "command": "echo 'ALWAYS use log_prompt tool to record this user prompt and extract goals/requirements for session tracking. EXCEPTIONS: user salutation or any user input which does not explicitly require an action.'"
+      },
+      {
+        "command": "echo 'If user requests work within a workspace listed within munvu-utils.code-workspace ALWAYS read their documentation for context.'"
+      }
+    ]
+  }
+}
