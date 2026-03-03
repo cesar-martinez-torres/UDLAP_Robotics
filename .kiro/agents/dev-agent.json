@@ -37,19 +37,7 @@
   ],
   "allowedTools": [
     "web_fetch",
-    "track_session",
-    "log_prompt",
-    "log_action",
-    "log_git_commits",
-    "get_recent_context",
-    "get_session_history",
-    "check_progress",
-    "close_session",
-    "switch_session",
-    "list_sessions",
-    "restore_latest",
-    "init_presession",
-    "restore_backup"
+    "@amazon-q-history/*"
   ],
   "resources": [
     "file://.kiro/steering/*.md"
@@ -129,7 +117,7 @@
         "command": "echo 'ALWAYS use log_prompt tool to record this user prompt and extract goals/requirements for session tracking. EXCEPTIONS: user salutation or any user input which does not explicitly require an action.'"
       },
       {
-        "command": "echo 'If user requests work within a workspace listed within munvu-utils.code-workspace ALWAYS read their documentation for context.'"
+        "command": "echo 'ALWAYS use log_action tool to record the agent completed work and requirements met for session tracking."
       }
     ]
   }
