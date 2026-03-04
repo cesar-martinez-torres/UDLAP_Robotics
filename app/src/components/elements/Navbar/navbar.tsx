@@ -1,10 +1,12 @@
 import { Box, Flex, Link, Text, IconButton } from "@chakra-ui/react";
 import { useColorMode } from "@chakra-ui/react";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import { Link as RouterLink } from "react-router-dom"; // Import RouterLink for navigation
+import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { Link as RouterLink } from "react-router-dom";
+import { useSidebar } from "../../../context/sidebar-context";
 
 export const Navbar: React.FC = () => {
-  const { colorMode, toggleColorMode } = useColorMode(); // Get colorMode and toggle function
+  const { colorMode, toggleColorMode } = useColorMode();
+  const { toggle } = useSidebar();
 
   return (
     <Box
@@ -14,14 +16,26 @@ export const Navbar: React.FC = () => {
       boxShadow="md"
     >
       <Flex justify="space-between" align="center">
-        <Text fontSize="xl" fontWeight="bold">
-          UDLAP Robotics
-        </Text>
+        <Flex align="center">
+          {/* Sidebar Toggle Button */}
+          <IconButton
+            aria-label="Toggle Sidebar"
+            icon={<HamburgerIcon />}
+            onClick={toggle}
+            variant="ghost"
+            color={colorMode === "dark" ? "white" : "gray.800"}
+            fontSize="xl"
+            mr={4}
+          />
+          <Text fontSize="xl" fontWeight="bold">
+            UDLAP Robotics
+          </Text>
+        </Flex>
         <Flex align="center">
           {/* Home Link */}
           <Link
             as={RouterLink}
-            to="/" // Link to the root (home) page
+            to="/"
             fontSize="lg"
             mr={4}
             _hover={{ textDecoration: "underline" }}
