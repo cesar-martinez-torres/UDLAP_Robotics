@@ -1,29 +1,34 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { IPage } from "../shared/interfaces/page.interface";
-import { fetchProjectsContents } from "../helpers/fetching-helpers";
+import { IPage, ISectionGroup } from "../shared/interfaces/page.interface";
+import { fetchAllSections } from "../helpers/fetching-helpers";
 
 interface IProjectsContext {
-  projects: IPage[];
+  sections: ISectionGroup[];
   loading: boolean;
+  getAllPages: () => IPage[];
 }
 
 const ProjectsContext = createContext<IProjectsContext | undefined>(undefined);
 
 export const ProjectsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [projects, setProjects] = useState<IPage[]>([]);
+  const [sections, setSections] = useState<ISectionGroup[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadProjects = async () => {
-      const data = await fetchProjectsContents();
-      setProjects(data);
+    const loadSections = async () => {
+      const data = await fetchAllSections();
+      setSections(data);
       setLoading(false);
     };
-    loadProjects();
+    loadSections();
   }, []);
 
+  const getAllPages = () => {
+    return sections.flatMap(section => section.pages);
+  };
+
   return (
-    <ProjectsContext.Provider value={{ projects, loading }}>
+    <ProjectsContext.Provider value={{ sections, loading, getAllPages }}>
       {children}
     </ProjectsContext.Provider>
   );

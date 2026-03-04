@@ -16,18 +16,37 @@ import { useProjects } from "../../../context/projects-context";
 
 export const Sidebar: React.FC = () => {
   const { colorMode } = useColorMode();
-  const { projects, loading } = useProjects();
-  const [expandedPages, setExpandedPages] = useState<Set<string>>(new Set());
+  const { sections, loading } = useProjects();
+  
+  // Initialize with all sections expanded by default
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(() => 
+    new Set(sections.map(s => s.sectionKey))
+  );
+  const [expandedPages, setExpandedPages] = useState<Set<string>>(() => 
+    new Set(sections.flatMap(s => s.pages.map(p => p.id)))
+  );
 
-  const toggleSection = (pageTitle: string) => {
-    setExpandedPages((prevExpandedPages) => {
-      const newExpandedPages = new Set(prevExpandedPages);
-      if (newExpandedPages.has(pageTitle)) {
-        newExpandedPages.delete(pageTitle);
+  const toggleSection = (sectionKey: string) => {
+    setExpandedSections((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(sectionKey)) {
+        newSet.delete(sectionKey);
       } else {
-        newExpandedPages.add(pageTitle);
+        newSet.add(sectionKey);
       }
-      return newExpandedPages;
+      return newSet;
+    });
+  };
+
+  const togglePage = (pageId: string) => {
+    setExpandedPages((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(pageId)) {
+        newSet.delete(pageId);
+      } else {
+        newSet.add(pageId);
+      }
+      return newSet;
     });
   };
 
@@ -43,59 +62,98 @@ export const Sidebar: React.FC = () => {
       overflowY="auto"
     >
       <VStack align="start" spacing={4} pb={3}>
-        <Heading as="h2" size="md">
-          Projects
-        </Heading>
         {loading ? (
           <Loading />
         ) : (
-          <VStack align="start" pl={4} spacing={2}>
-            {projects.map((page) => (
-              <Box key={page.id}>
-                <Link
-                  as={RouterLink}
-                  to={`/docs/${toKebabCase(page.title)}`}
-                  _hover={{ textDecoration: "underline" }}
-                  fontWeight="bold"
-                  onClick={() => toggleSection(page.title)}
-                >
-                  {page.displayTitle}
-                  <IconButton
-                    aria-label={
-                      expandedPages.has(page.title) ? "Collapse" : "Expand"
-                    }
-                    icon={
-                      expandedPages.has(page.title) ? (
-                        <ChevronUpIcon />
-                      ) : (
-                        <ChevronDownIcon />
-                      )
-                    }
-                    size="sm"
-                    variant="link"
-                    ml={2}
-                  />
-                </Link>
-                <Collapse in={expandedPages.has(page.title)}>
-                  <VStack align="start" spacing={2} pl={4}>
-                    {page.sections.map((section) => {
-                      const sectionLink = toKebabCase(section.clean);
-                      return (
-                        <Link
-                          key={sectionLink}
-                          as={RouterLink}
-                          to={`/docs/${toKebabCase(page.title)}#${sectionLink}`}
-                          _hover={{ textDecoration: "underline" }}
-                        >
-                          {section.display}
-                        </Link>
-                      );
-                    })}
-                  </VStack>
-                </Collapse>
-              </Box>
-            ))}
-          </VStack>
+          sections.map((section) => (
+            <Box key={section.sectionKey} w="full">
+              <Heading
+                as="h2"
+                size="md"
+                cursor="pointer"
+                onClick={() => toggleSection(section.sectionKey)}
+                display="flex"
+                alignItems="center"
+                _hover={{ opacity: 0.8 }}
+              >
+                {section.displayName}
+                <IconButton
+                  aria-label={
+                    expandedSections.has(section.sectionKey) ? "Collapse" : "Expand"
+                  }
+                  icon={
+                    expandedSections.has(section.sectionKey) ? (
+                      <ChevronUpIcon />
+                    ) : (
+                      <ChevronDownIcon />
+                    )
+                  }
+                  size="sm"
+                  variant="link"
+                  ml={2}
+                />
+              </Heading>
+              <Collapse in={expandedSections.has(section.sectionKey)}>
+                <VStack align="start" pl={4} spacing={2} mt={2}>
+                  {section.pages.map((page) => (
+                    <Box key={page.id} w="full">
+                      <Link
+                        as={RouterLink}
+                        to={`/docs/${toKebabCase(page.title)}`}
+                        _hover={{ textDecoration: "underline" }}
+                        fontWeight="bold"
+                        display="flex"
+                        alignItems="center"
+                      >
+                        {page.displayTitle}
+                        {page.sections.length > 0 && (
+                          <IconButton
+                            aria-label={
+                              expandedPages.has(page.id) ? "Collapse" : "Expand"
+                            }
+                            icon={
+                              expandedPages.has(page.id) ? (
+                                <ChevronUpIcon />
+                              ) : (
+                                <ChevronDownIcon />
+                              )
+                            }
+                            size="sm"
+                            variant="link"
+                            ml={2}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              togglePage(page.id);
+                            }}
+                          />
+                        )}
+                      </Link>
+                      {page.sections.length > 0 && (
+                        <Collapse in={expandedPages.has(page.id)}>
+                          <VStack align="start" spacing={1} pl={4} mt={1}>
+                            {page.sections.map((section) => {
+                              const sectionLink = toKebabCase(section.clean);
+                              return (
+                                <Link
+                                  key={sectionLink}
+                                  as={RouterLink}
+                                  to={`/docs/${toKebabCase(page.title)}#${sectionLink}`}
+                                  _hover={{ textDecoration: "underline" }}
+                                  fontSize="sm"
+                                >
+                                  {section.display}
+                                </Link>
+                              );
+                            })}
+                          </VStack>
+                        </Collapse>
+                      )}
+                    </Box>
+                  ))}
+                </VStack>
+              </Collapse>
+            </Box>
+          ))
         )}
       </VStack>
     </Box>

@@ -1,106 +1,134 @@
 import { IGitHubContent } from "../shared/interfaces/github.interface";
-import { IPage } from "../shared/interfaces/page.interface";
+import { IPage, ISectionGroup } from "../shared/interfaces/page.interface";
 import { GITHUB_CONTENT_URL } from "./constant-helpers";
 import { parseMarkdownToChakra } from "./md-jsx-parser";
+import { SECTIONS } from "../config/sections.config";
 
-export const fetchProjectsContents = async (
+export const fetchAllSections = async (
+  colorMode?: "light" | "dark"
+): Promise<ISectionGroup[]> => {
+  const sectionGroups: ISectionGroup[] = [];
+  
+  for (const section of SECTIONS) {
+    try {
+      const pages = await fetchSectionContents(section.path, section.key, colorMode);
+      sectionGroups.push({
+        sectionKey: section.key,
+        displayName: section.displayName,
+        pages
+      });
+    } catch (e) {
+      console.error(`Failed to fetch section ${section.key}:`, e);
+      sectionGroups.push({
+        sectionKey: section.key,
+        displayName: section.displayName,
+        pages: []
+      });
+    }
+  }
+  
+  return sectionGroups;
+};
+
+export const fetchSectionContents = async (
+  sectionPath: string,
+  sectionKey: string,
   colorMode?: "light" | "dark"
 ): Promise<IPage[]> => {
   const contents: IPage[] = [];
   try {
-    const projectsResponse = await fetch(`${GITHUB_CONTENT_URL}/projects`);
-    if (!projectsResponse.ok) {
-      throw new Error("Failed to fetch projects directory contents");
+    const sectionResponse = await fetch(`${GITHUB_CONTENT_URL}/${sectionPath}`);
+    if (!sectionResponse.ok) {
+      throw new Error(`Failed to fetch ${sectionPath} directory contents`);
     }
-    const projects = await projectsResponse.json();
-    const interpretedProjects = projects as IGitHubContent[];
+    const items = await sectionResponse.json();
+    const interpretedItems = items as IGitHubContent[];
     
-    // Filter out non-directory items (like .DS_Store)
-    const projectDirectories = interpretedProjects.filter(
-      (project) => project.type === "dir"
+    const itemDirectories = interpretedItems.filter(
+      (item) => item.type === "dir"
     );
     
-    // Parallelize API calls with Promise.all
-    const projectPromises = projectDirectories.map(async (project) => {
+    const itemPromises = itemDirectories.map(async (item) => {
       try {
-        const projectResponse = await fetch(
-          `${GITHUB_CONTENT_URL}/${project.path}`
+        const itemResponse = await fetch(
+          `${GITHUB_CONTENT_URL}/${item.path}`
         );
-        if (!projectResponse.ok) {
+        if (!itemResponse.ok) {
           throw new Error(
-            `Failed to fetch ${GITHUB_CONTENT_URL}/${project.path} contents`
+            `Failed to fetch ${GITHUB_CONTENT_URL}/${item.path} contents`
           );
         }
-        const projectContents = await projectResponse.json();
+        const itemContents = await itemResponse.json();
         
-        const interpretedProjectReadmeContent = projectContents.find(
-          (projectContent: IGitHubContent) =>
-            projectContent.name.includes("README.md") &&
-            projectContent.type.includes("file")
+        const interpretedReadmeContent = itemContents.find(
+          (content: IGitHubContent) =>
+            content.name.includes("README.md") &&
+            content.type.includes("file")
         ) as IGitHubContent;
         
-        if (interpretedProjectReadmeContent?.download_url) {
-          const projectReadmeFile = await fetch(
-            interpretedProjectReadmeContent.download_url
+        if (interpretedReadmeContent?.download_url) {
+          const readmeFile = await fetch(
+            interpretedReadmeContent.download_url
           );
-          const readmeText = await projectReadmeFile.text();
+          const readmeText = await readmeFile.text();
           const parsedReadme = parseMarkdownToChakra(readmeText, colorMode);
           
           return {
             title: parsedReadme.title,
             displayTitle: parsedReadme.displayTitle,
             content: parsedReadme.content,
-            id: project.name,
+            id: item.name,
             sections: parsedReadme.sections,
-          };
+            sectionKey
+          } as IPage;
         }
       } catch (e) {
         console.error(
-          `There was an issue reading README.md for ${project.name}`,
+          `There was an issue reading README.md for ${item.name}`,
           e
         );
       }
       return null;
     });
     
-    const results = await Promise.all(projectPromises);
-    contents.push(...results.filter((result): result is IPage => result !== null));
+    const results = await Promise.all(itemPromises);
+    const validResults = results.filter((result): result is IPage => result !== null);
+    contents.push(...validResults);
   } catch (e) {
-    console.error("fetchProjectsContents:", e);
+    console.error(`fetchSectionContents for ${sectionPath}:`, e);
   }
   return contents;
+};
+
+// Legacy function for backward compatibility
+export const fetchProjectsContents = async (
+  colorMode?: "light" | "dark"
+): Promise<IPage[]> => {
+  return fetchSectionContents('projects', 'projects', colorMode);
 };
 
 export const fetchMainReadme = async (
   colorMode?: "light" | "dark"
 ): Promise<IPage[]> => {
-  // Create output variable
   const contents: IPage[] = [];
   try {
-    // Fetch github-repo/projects content
     const repoResponse = await fetch(`${GITHUB_CONTENT_URL}/`);
     if (!repoResponse.ok) {
       throw new Error("Failed to fetch directory contents");
     }
     const repoContent = await repoResponse.json();
-    // Interpret the retrieved data
     const interpretedRepoContent = repoContent as IGitHubContent[];
     const interpretedRepoReadmeContent = interpretedRepoContent.find(
       (projectContent: IGitHubContent) =>
         projectContent.name.includes("README.md") &&
         projectContent.type.includes("file")
     ) as IGitHubContent;
-    // If the `download_url` exists proceed
     if (interpretedRepoReadmeContent.download_url) {
-      // Download the `README.md` actual file
       const projectReadmeFile = await fetch(
         interpretedRepoReadmeContent.download_url
       );
-      // Convert to string
       const readmeText = await projectReadmeFile.text();
-      // Parse string
       const parsedReadme = parseMarkdownToChakra(readmeText, colorMode);
-      // Store in the output
       contents.push({
         title: parsedReadme.title,
         displayTitle: parsedReadme.displayTitle,

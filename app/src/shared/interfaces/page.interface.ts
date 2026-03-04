@@ -11,4 +11,11 @@ export interface IPage {
   displayTitle: string;
   content: JSX.Element | JSX.Element[] | React.ReactNode;
   sections: ISection[];
+  sectionKey?: string;
+}
+
+export interface ISectionGroup {
+  sectionKey: string;
+  displayName: string;
+  pages: IPage[];
 }
