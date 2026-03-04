@@ -164,14 +164,20 @@ const ChakraRenderer = (colorMode: "light" | "dark") => {
       );
     },
     p: (props: any) => {
-      // Check if paragraph contains only images (badges)
-      const hasOnlyImages = props.children && 
+      // Check if paragraph contains only badges (images or links with images)
+      const hasOnlyBadges = props.children && 
         Array.isArray(props.children) && 
-        props.children.every((child: any) => child?.type === 'img' || child === '\n');
+        props.children.every((child: any) => {
+          if (child === '\n' || child === ' ') return true;
+          if (child?.type === 'img') return true;
+          // Check if it's a link containing an image (badge link)
+          if (child?.type === 'a' && child?.props?.children?.type === 'img') return true;
+          return false;
+        });
 
-      if (hasOnlyImages) {
+      if (hasOnlyBadges) {
         return (
-          <Box display="flex" flexWrap="nowrap" overflowX="auto" gap={2} mb={4}>
+          <Box display="flex" flexWrap="nowrap" overflowX="auto" gap={2} mb={4} alignItems="center">
             {props.children}
           </Box>
         );
@@ -288,21 +294,41 @@ const ChakraRenderer = (colorMode: "light" | "dark") => {
         </Box>
       );
     },
-    a: (props: any) => (
-      <Link
-        href={props.href}
-        isExternal
-        _hover={{
-          textDecoration: "underline",
-          color: colorMode === "dark" ? "yellow.400" : "blue.500",
-        }}
-        color={colorMode === "dark" ? "gray.200" : "gray.700"}
-        fontWeight="bold"
-        {...props}
-      >
-        {props.children}
-      </Link>
-    ),
+    a: (props: any) => {
+      // Check if link contains a badge image
+      const isBadgeLink = props.children?.type === 'img' && 
+        (props.children?.props?.src?.includes('shields.io') || 
+         props.children?.props?.src?.includes('badge'));
+
+      if (isBadgeLink) {
+        return (
+          <Link
+            href={props.href}
+            isExternal
+            display="inline-block"
+            _hover={{ opacity: 0.8 }}
+          >
+            {props.children}
+          </Link>
+        );
+      }
+
+      return (
+        <Link
+          href={props.href}
+          isExternal
+          _hover={{
+            textDecoration: "underline",
+            color: colorMode === "dark" ? "yellow.400" : "blue.500",
+          }}
+          color={colorMode === "dark" ? "gray.200" : "gray.700"}
+          fontWeight="bold"
+          {...props}
+        >
+          {props.children}
+        </Link>
+      );
+    },
     table: (props: any) => (
       <Box overflowX="auto" mb={4}>
         <Table
