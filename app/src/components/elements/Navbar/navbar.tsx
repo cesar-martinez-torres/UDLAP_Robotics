@@ -31,7 +31,7 @@ export const Navbar: React.FC = () => {
           </Link>
           {/* GitHub Link */}
           <Link
-            href="https://github.com/your-repo"
+            href="https://github.com/cesar-martinez-torres/UDLAP_Robotics"
             isExternal
             fontSize="lg"
             mr={4}

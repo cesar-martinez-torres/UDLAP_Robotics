@@ -1,0 +1,4 @@
+# AI-driven development
+.amazon-q-history/logs*
+.amazon-q-history/sessions*
+.amazon-q-history/backup*
