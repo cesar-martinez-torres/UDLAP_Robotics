@@ -224,21 +224,7 @@ Technical requirements:
 
 ------------------------------------------------------------------------
 
-## 2.10 Internal Article Index
-
-Each tutorial or project page must include an internal **Table of
-Contents (TOC)**.
-
-Technical requirements:
-
--   Automatically parse headings (`h1`--`h4`).
--   Generate anchor links.
--   Display a floating or sidebar TOC.
--   Highlight the active section while scrolling.
-
-------------------------------------------------------------------------
-
-## 2.11 Article Sections Must Be Expanded by Default
+## 2.10 Article Sections Must Be Expanded by Default
 
 Within each article, the internal navigation sections must appear
 **expanded (not collapsed) by default**.
