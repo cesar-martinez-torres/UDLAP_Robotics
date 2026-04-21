@@ -1,0 +1,29 @@
+<launch>
+  <!-- Argumentos -->
+  <arg name="use_sim" default="true"/>
+  
+  <!-- Cargar URDF -->
+  <param name="robot_description" 
+         command="$(find xacro)/xacro '$(find abb_irb140_support)/urdf/irb140.xacro' use_sim:=$(arg use_sim)"/>
+  
+  <!-- Gazebo -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="false"/>
+    <arg name="gui" value="true"/>
+  </include>
+
+  <!-- Spawn Robot -->
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model"
+        args="-urdf -param robot_description -model irb140 -z 0.1
+              -J joint_1 0 -J joint_2 0 -J joint_3 0
+              -J joint_4 0 -J joint_5 0 -J joint_6 0"
+        output="screen"/>
+
+  <!-- Controladores -->
+  <rosparam file="$(find abb_irb140_support)/config/controllers.yaml" command="load"/>
+  <node name="controller_spawner" pkg="controller_manager" type="spawner"
+        args="joint_state_controller arm_controller"/>
+  
+  <!-- Robot State Publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+</launch>
