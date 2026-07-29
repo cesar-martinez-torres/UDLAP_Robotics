@@ -2,6 +2,12 @@
 
 Hands-on **1D Pong** game development using **VHDL** and the **Basys 3** FPGA board, perfect for beginners in FPGA design.
 
+![Maintenance status: not maintained](https://img.shields.io/badge/maintenance-not%20maintained-red)
+![Hardware: Basys 3](https://img.shields.io/badge/hardware-Basys%203-1F6FEB)
+![Language: VHDL](https://img.shields.io/badge/language-VHDL-945DB7)
+
+**Published:** July 29, 2026
+
 ![Basys 3 board with external player buttons](https://raw.githubusercontent.com/cesar-martinez-torres/UDLAP_Robotics/master/projects/1D_VHDL_Pong/media/images/showcase.jpg)
 
 ---
@@ -36,8 +42,6 @@ The repository does not currently include testbenches, simulation reports, or a 
 
 > [!NOTE]
 > **Button synchronization and debouncing:** Mechanical push buttons can generate several rapid transitions when pressed or released. The current VHDL design does not include an explicit input synchronizer or debounce filter. For more reliable operation, especially when using external buttons, add clock-domain synchronization and a debounce stage before the signals reach the game logic. Without them, behavior may vary because of contact bounce or asynchronous input timing.
-
----
 
 ## 🔧 Hardware
 
