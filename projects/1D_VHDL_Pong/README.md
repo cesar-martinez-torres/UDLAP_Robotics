@@ -435,7 +435,7 @@ The constraints file maps the clock, reset input, 16 LEDs, seven-segment display
 Based on the evidence currently stored in the repository, the project provides the source code, hardware constraints, circuit reference, and setup procedure required to study and reproduce the intended design. However, no testbench files, simulation reports, or recorded hardware test results are included. Therefore, complete verification of both input configurations and all game conditions remains pending.
 
 <!--
-## 🧪 Validation and Results
+ 🧪 Validation and Results
 
 This section is intentionally hidden from the published page until verified evidence is available.
 
