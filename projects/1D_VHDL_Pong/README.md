@@ -467,6 +467,8 @@ This project was created by:
 * **Ana Paola Vargas González** — 180549  
   📧 ana.vargasgz@udlap.mx
 * **Philip Dell** — 186247
+* 
+---
 
 ## 👨‍🏫 Academic Supervision and Repository Maintenance
 
