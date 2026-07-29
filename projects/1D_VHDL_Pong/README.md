@@ -468,7 +468,7 @@ This project was created by:
   📧 ana.vargasgz@udlap.mx
 * **Philip Dell** — 186247
 
-### Academic Supervision and Repository Maintenance
+## 👨‍🏫 Academic Supervision and Repository Maintenance
 
 The original project and its technical implementation were developed by the students listed above.
 
