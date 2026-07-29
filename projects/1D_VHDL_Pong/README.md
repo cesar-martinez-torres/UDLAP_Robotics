@@ -2,7 +2,7 @@
 
 Hands-on **1D Pong** game development using **VHDL** and the **Basys 3** FPGA board, perfect for beginners in FPGA design.
 
-![An image showcasing the Basys-3 Board with a breadboard for the buttons.](media/images/showcase.jpg)
+![Basys 3 board with external player buttons](https://raw.githubusercontent.com/cesar-martinez-torres/UDLAP_Robotics/master/projects/1D_VHDL_Pong/media/images/showcase.jpg)
 
 ---
 
@@ -30,7 +30,7 @@ This 1D Pong game is played by **two players**, each controlling one push button
 
 ## Disclaimer
 
-This project is provided for educational purposes and is distributed under the terms of the included [MIT License](LICENSE). The hardware and software are provided **as is**, without warranty. Before programming or wiring the board, verify the Basys 3 revision, pin assignments, I/O voltage, and electrical connections. Disconnect power before changing external wiring.
+This project is provided for educational purposes and is distributed under the terms of the included [MIT License](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/1D_VHDL_Pong/LICENSE). The hardware and software are provided **as is**, without warranty. Before programming or wiring the board, verify the Basys 3 revision, pin assignments, I/O voltage, and electrical connections. Disconnect power before changing external wiring.
 
 The repository does not currently include testbenches, simulation reports, or a documented validation record for both button configurations. Review the constraints and test the design under controlled conditions before relying on it for demonstrations or further development.
 
@@ -50,7 +50,7 @@ Depending on your specific FPGA board you need to adjust the constraints, as thi
 
 You can test the game using the built-in buttons on the Basys 3 board, but note that it's less user-friendly because the buttons are not positioned on the respective player's side.
 
-To use the left and right buttons on the Basys 3 board, keep the VHDL port names `btn_player1` and `btn_player2`. In `Basys3.xdc`, uncomment the internal-button constraints:
+To use the left and right buttons on the Basys 3 board, keep the VHDL port names **btn_player1** and **btn_player2**. In **Basys3.xdc**, uncomment the internal-button constraints:
 
 1. Uncomment the following:
 ```
@@ -74,7 +74,7 @@ set_property PACKAGE_PIN T17 [get_ports btn_player2]
 If you'd prefer to use external buttons, leave the constraints as they are in the example.
 In this case you also have to connect the button circuits to power, ground, and the assigned GPIOs. Use the pull-down resistors shown so the inputs do not float when the buttons are released.
 
-![Image showing the circuit for the input button.](media/images/circuit.png)
+![External push-button circuit with pull-down resistor](https://raw.githubusercontent.com/cesar-martinez-torres/UDLAP_Robotics/master/projects/1D_VHDL_Pong/media/images/circuit.png)
 
 ---
 
@@ -83,7 +83,7 @@ In this case you also have to connect the button circuits to power, ground, and 
 Using [Vivado](https://www.xilinx.com/support/download.html):
 
 1. Code and Hardware preparation (listed above)
-2. Create the Vivado project for your FPGA, import the sources and constraints (`.xdc`)
+2. Create the Vivado project for your FPGA, import the sources and constraints (**.xdc**)
 3. Generate the bitstream for your Board
 4. Upload the Bitstream / Program the Device
 5. Enjoy 🎮
@@ -133,11 +133,17 @@ It includes a general view of the structure of the files on the repository, with
 
 ---
 
+## 📁 Code
+
+The complete VHDL source code and the Basys 3 constraints file are available in the project’s [src folder on GitHub](https://github.com/cesar-martinez-torres/UDLAP_Robotics/tree/master/projects/1D_VHDL_Pong/src).
+
+---
+
 ## 💻 Code Explanation
 
 ### 🔸 LED Loop
 
-Code for [LED_Loop](src/LED_Loop.vhd).
+Code for [LED_Loop](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/1D_VHDL_Pong/src/LED_Loop.vhd).
 
 **Ports declaration**
 ```vhdl
@@ -179,7 +185,7 @@ The counter is adding every time there is a rising edge. Meaning it will be slow
 
 ### 🔸 LED Loop Logic
 
-Code for [GameLogicLED](src/GameLogicLED.vhd).
+Code for [GameLogicLED](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/1D_VHDL_Pong/src/GameLogicLED.vhd).
 
 **Ports declaration**
 ```vhdl
@@ -194,7 +200,7 @@ port(
     );
 ```
 
-This block handles the logic for the loop of LEDs. It also handles the score system, adding and returning the score back to the main `Game.vhd`.
+This block handles the logic for the loop of LEDs. It also handles the score system, adding and returning the score back to the main **Game.vhd** file.
 
 ```vhdl
         if (current_pos = length) then
@@ -222,7 +228,7 @@ If it has not reached the end, it keeps adding to the position. Same logic appli
 
 ### 🔸 7-Segment Display Decoder
 
-Code for [DisplayDecoder](src/DisplayDecoder.vhd).
+Code for [DisplayDecoder](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/1D_VHDL_Pong/src/DisplayDecoder.vhd).
 
 **Ports declaration**
 ```vhdl
@@ -253,7 +259,7 @@ Every 0 of the vector is an active LED of the seven segment, in this case we had
 
 ### 🔸 Display Logic
 
-Code for [ScoreDisplay](src/ScoreDisplay.vhd).
+Code for [ScoreDisplay](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/1D_VHDL_Pong/src/ScoreDisplay.vhd).
 
 **Ports declaration**
 ```vhdl
@@ -295,15 +301,15 @@ display_a: display_7seg port map(
     anode <= anode_temp;
 ```
 
-The decoder from [DisplayDecoder](src/DisplayDecoder.vhd) is used to decode the BCD vector into seven segment logic. Later the anode signal is connected to the anode output.
+The decoder from [DisplayDecoder](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/1D_VHDL_Pong/src/DisplayDecoder.vhd) is used to decode the BCD vector into seven segment logic. Later the anode signal is connected to the anode output.
 
 ---
 
 ### 🔸 Game Top Entity
 
-Code for [Game](src/Game.vhd).
+Code for [Game](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/1D_VHDL_Pong/src/Game.vhd).
 
-`Game` is the top entity of our design. It is intended to have all the connections from the Basys board and implements a hard reset which sets all to 0.
+**Game** is the top entity of our design. It is intended to have all the connections from the Basys board and implements a hard reset which sets all to 0.
 
 **Ports declaration**
 ```vhdl
@@ -348,7 +354,7 @@ LED cases convert the position to a single LED that is turned on (Demultiplexer)
 
 ### 🔸 Constraints
 
-Code for [Basys 3](src/Basys3.xdc).
+Code for [Basys 3 constraints](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/1D_VHDL_Pong/src/Basys3.xdc).
 
 ```xdc
 set_property PACKAGE_PIN W5 [get_ports clk]
@@ -418,7 +424,7 @@ Used configuration. Not necessary to modify if working with the same board.
 
 ## ✅ Conclusion
 
-The available project files document a modular VHDL implementation of one-dimensional Pong for the Basys 3 FPGA. The design separates clock division in `LED_Loop`, ball position and scoring in `GameLogicLED`, seven-segment encoding and multiplexing in `DisplayDecoder` and `ScoreDisplay`, and top-level integration in `Game`.
+The available project files document a modular VHDL implementation of one-dimensional Pong for the Basys 3 FPGA. The design separates clock division in **LED_Loop**, ball position and scoring in **GameLogicLED**, seven-segment encoding and multiplexing in **DisplayDecoder** and **ScoreDisplay**, and top-level integration in **Game**.
 
 The constraints file maps the clock, reset input, 16 LEDs, seven-segment display, and two external player buttons to Basys 3 pins. The documentation also explains how the button constraints can be adapted to use buttons located on the board. Together, these materials describe how player input changes the ball direction and speed, how missed returns update the score, and how the score is presented on the display.
 
