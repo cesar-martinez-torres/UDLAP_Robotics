@@ -1,7 +1,9 @@
+# {Project: 1D VHDL Pong}
+
 Hands-on **1D Pong** game development using **VHDL** and the **Basys 3** FPGA board, perfect for beginners in FPGA design.
 
-![Maintenance status: not maintained](<https://img.shields.io/badge/maintenance-not%20maintained-red>)
-![Hardware: Basys 3](<https://img.shields.io/badge/hardware-Basys%203-1F6FEB>)
+![Maintenance status: not maintained](https://img.shields.io/badge/maintenance-not%20maintained-red)
+![Hardware: Basys 3](https://img.shields.io/badge/hardware-Basys%203-1F6FEB)
 ![Language: VHDL](https://img.shields.io/badge/language-VHDL-945DB7)
 
 **Published:** July 29, 2026
@@ -55,7 +57,6 @@ You can test the game using the built-in buttons on the Basys 3 board, but note 
 To use the left and right buttons on the Basys 3 board, keep the VHDL port names **btn_player1** and **btn_player2**. In **Basys3.xdc**, uncomment the internal-button constraints:
 
 1. Uncomment the following:
-
 ```
 set_property PACKAGE_PIN W19 [get_ports btn_player1]
 	set_property IOSTANDARD LVCMOS33 [get_ports btn_player1]
@@ -64,7 +65,6 @@ set_property PACKAGE_PIN T17 [get_ports btn_player2]
 ```
 
 2. Comment the following:
-
 ```
 #set_property PACKAGE_PIN J3 [get_ports {btn_player2}]
 	#set_property IOSTANDARD LVCMOS33 [get_ports {btn_player2}]
@@ -112,7 +112,7 @@ It includes a general view of the structure of the files on the repository, with
 ├── src/  
 │   ├── Basys3.xdc          # Constraints for Basys 3 Board  
 │   ├── DisplayDecoder.vhd  # BCD to Seven segment decoder
-│   ├── Game.vhd            # Top Entity of the design  
+│   ├── Game.vhd            # Top Entity of the design    
 │   ├── GameLogicLED.vhd    # LEDs Logic, for ball movement  
 │   ├── LED_Loop.vhd        # LEDs Loop from the Basys 3 Board
 │   ├── ScoreDisplay.vhd    # Logic for shown score on seven segment
@@ -124,10 +124,15 @@ It includes a general view of the structure of the files on the repository, with
 ### 📝 Description of Files
 
 - **LED_Loop**: Contains the logic to control the way of turning on the LEDs of the Basys3. It uses the signal of the clock and a divider to control the speed of the movement of the LEDs. Basically the logic of this file makes sure that the LEDs state changes according to the signal of the clock and the divider.
+
 - **GameLogicLED**: Controls the states of the LEDs used for the movement of the players inside the game. Additionally, the score system that increases the score of each player when they reach certain values is contained here. It also allows establishing the speed of the LEDs and controlling the flow of the positions in the game.
+
 - **Game**: This file is the **top entity** of the design. Here all the connections of the different parts of the game come together: from the buttons of the players, the control of the LEDs, and the visualization of the score. It also implements a reset to set the game to its initial state.
+
 - **DisplayDecoder**: In charge of decoding the numbers that are in BCD format (decimal code coded in binary) to a compatible format for the 7-segment display of the Basys 3 by activating the correct segments according to what goes in.
+
 - **ScoreDisplay**: Logic to handle the four-digit seven segment display, coordinating which digit lights up and what value is shown on it.
+
 - **Basys3**: Contains the restrictions of the Basys 3, defines how the different connections of the FPGA to the external components like the buttons, LEDs and displays are routed. It also establishes the clock.
 
 ---
@@ -145,7 +150,6 @@ The complete VHDL source code and the Basys 3 constraints file are available in 
 Code for [LED_Loop](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/1D_VHDL_Pong/src/LED_Loop.vhd).
 
 **Ports declaration**
-
 ```vhdl
 entity LED_Loop is
     port(
@@ -188,7 +192,6 @@ The counter is adding every time there is a rising edge. Meaning it will be slow
 Code for [GameLogicLED](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/1D_VHDL_Pong/src/GameLogicLED.vhd).
 
 **Ports declaration**
-
 ```vhdl
 port(
         RST : in std_logic;
@@ -212,7 +215,7 @@ This block handles the logic for the loop of LEDs. It also handles the score sys
                 else
                     score1 <= score1 + 1;
                 end if;
-                current_pos <= "1000";
+                current_pos <= "1000"; 
 ```
 
 Every time the ball reaches the end of player 2's side, player 1 gains a point. A score of 9 represents the winning score. If that player already has 9 points and scores again, the implementation resets both scores to zero and starts a new match.
@@ -232,12 +235,11 @@ If it has not reached the end, it keeps adding to the position. Same logic appli
 Code for [DisplayDecoder](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/1D_VHDL_Pong/src/DisplayDecoder.vhd).
 
 **Ports declaration**
-
 ```vhdl
 entity display_7seg is
     Port ( num : in STD_LOGIC_VECTOR(3 downto 0);
            seg : out STD_LOGIC_VECTOR(6 downto 0));
-end display_7seg;
+end display_7seg;  
 ```
 
 The decoder gets a BCD number and sends a seven segment logic vector which is later connected to the Basys board.
@@ -264,7 +266,6 @@ Every 0 of the vector is an active LED of the seven segment, in this case we had
 Code for [ScoreDisplay](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/master/projects/1D_VHDL_Pong/src/ScoreDisplay.vhd).
 
 **Ports declaration**
-
 ```vhdl
  Port (
         clk      : in STD_LOGIC;  
@@ -315,7 +316,6 @@ Code for [Game](https://github.com/cesar-martinez-torres/UDLAP_Robotics/blob/mas
 **Game** is the top entity of our design. It is intended to have all the connections from the Basys board and implements a hard reset which sets all to 0.
 
 **Ports declaration**
-
 ```vhdl
     port(
         clk : in std_logic;
@@ -391,7 +391,7 @@ set_property PACKAGE_PIN W7 [get_ports {seg[0]}]
 #5 more Constraints
 set_property PACKAGE_PIN U7 [get_ports {seg[6]}]
 	set_property IOSTANDARD LVCMOS33 [get_ports {seg[6]}]
-
+	
 set_property PACKAGE_PIN U2 [get_ports {an[0]}]
 	set_property IOSTANDARD LVCMOS33 [get_ports {an[0]}]
 #2 more Constraints
@@ -451,7 +451,9 @@ This section is intentionally hidden from the published page until verified evid
 ## 📚 References
 
 - PensActius. (2018, February 23). *Juego PONG con tira de leds y arduino* [Video]. YouTube. [Pong Game Example by PensActius](https://www.youtube.com/watch?v=Q-6n0XncaWE)
+
 - Ingeniería Electrónica Industrial Campus Jalpa. (2020, May 19). *Juego Pong IEI Juego Arduino Impresión 3D* [Video]. YouTube. [Pong Game Example by Ingeniería Electrónica Industrial Campus Jalpa](https://www.youtube.com/watch?app=desktop&v=adN6mfCjHu4)
+
 - Robot UNO. (2020, July 9). *PING-PONG con ARDUINO || MINIJUEGO CON ARDUINO || PROYECTO para PRINCIPIANTES [explicado paso a paso]* [Video]. YouTube. [Pong Game Example by Robot UNO](https://www.youtube.com/watch?v=ttuo--XyvzM)
 
 ---
@@ -462,9 +464,10 @@ This project was created by:
 
 * **Adrián Rodríguez Godínez** — 179784
 * **Ian Carlo Vicente Aburto** — 182598
-* **Ana Paola Vargas González** — 180549📧 ana.vargasgz@udlap.mx
+* **Ana Paola Vargas González** — 180549  
+  📧 ana.vargasgz@udlap.mx
 * **Philip Dell** — 186247
-
+* 
 ---
 
 ## 👨‍🏫 Academic Supervision and Repository Maintenance

@@ -1,4 +1,4 @@
-# Simulink-Based Design and Control of an Autonomous Library Assistant Robot
+# {Project: Simulink-Based Design and Control of an Autonomous Library Assistant Robot}
 
 ![Maintenance status: maintained](<https://img.shields.io/badge/maintenance-maintained-brightgreen>)
 ![Award: ExpoCEM 3.0 second place](<https://img.shields.io/badge/award-ExpoCEM%203.0%20second%20place-FFD700>)
